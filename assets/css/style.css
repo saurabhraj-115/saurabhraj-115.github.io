@@ -742,12 +742,14 @@ section {
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
+ 
 }
 
 .testimonials .testimonial-item {
   box-sizing: content-box;
   text-align: center;
   min-height: 320px;
+  
 }
 
 .testimonials .testimonial-item .testimonial-img {
