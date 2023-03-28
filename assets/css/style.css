@@ -835,6 +835,7 @@ section {
 --------------------------------------------------------------*/
 .contact {
   padding-bottom: 130px;
+  
 }
 
 .contact .info {
@@ -842,6 +843,7 @@ section {
   background: #fff;
   width: 100%;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  /* align-self: center; */
 }
 
 .contact .info i {
