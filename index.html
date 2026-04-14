@@ -13,83 +13,234 @@
 
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Syne', 'sans-serif'],
-          }
-        }
-      }
+      theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Syne','sans-serif'] } } }
     }
   </script>
 
   <style>
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
 
-    body {
-      background-color: #05080f;
-      color: #cbd5e1;
-      font-family: 'Inter', sans-serif;
+    :root {
+      --bg: #05080f;
+      --surface: #0c1220;
+      --indigo: #6366f1;
+      --indigo-light: #a5b4fc;
+      --cyan: #38bdf8;
     }
 
-    /* Gradient text */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: #cbd5e1;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLL PROGRESS BAR ─── */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, #6366f1, #38bdf8, #a78bfa);
+      background-size: 200% 100%;
+      z-index: 200;
+      animation: gradMove 3s linear infinite;
+      transition: width 0.05s linear;
+    }
+    @keyframes gradMove {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    /* ─── CURSOR GLOW ─── */
+    #cursor-glow {
+      position: fixed;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 65%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      transition: opacity 0.4s;
+    }
+
+    /* ─── GRADIENT TEXT ─── */
     .g-text {
-      background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 40%, #38bdf8 100%);
+      background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 35%, #38bdf8 70%, #a5b4fc 100%);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradShift 6s ease infinite;
+    }
+    @keyframes gradShift {
+      0%   { background-position: 0%   50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0%   50%; }
     }
 
-    /* Hero bg with glow */
+    /* ─── HERO ─── */
     .hero-bg {
-      background-color: #05080f;
+      background-color: var(--bg);
       background-image:
-        radial-gradient(ellipse 80% 60% at 50% -20%, rgba(99,102,241,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(56,189,248,0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 90% 70% at 50% -10%, rgba(99,102,241,0.2) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(56,189,248,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 10% 90%, rgba(167,139,250,0.06) 0%, transparent 60%);
     }
-
-    /* Subtle grid overlay */
     .grid-overlay {
-      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 56px 56px;
     }
 
-    /* Gradient border card */
-    .g-card {
-      position: relative;
-      background: #0c1220;
-      border-radius: 1rem;
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      opacity: 0.5;
     }
-    .g-card::before {
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(99,102,241,0.12);
+      top: 15%; left: 10%;
+      animation: float1 18s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: rgba(56,189,248,0.08);
+      top: 40%; right: 8%;
+      animation: float2 22s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 250px; height: 250px;
+      background: rgba(167,139,250,0.08);
+      bottom: 15%; left: 30%;
+      animation: float3 15s ease-in-out infinite;
+    }
+    @keyframes float1 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(40px,-30px) scale(1.06); }
+      66%      { transform: translate(-25px,25px) scale(0.94); }
+    }
+    @keyframes float2 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      40%      { transform: translate(-35px,20px) scale(1.08); }
+      70%      { transform: translate(30px,-15px) scale(0.96); }
+    }
+    @keyframes float3 {
+      0%,100% { transform: translate(0,0); }
+      50%      { transform: translate(20px,-20px); }
+    }
+
+    /* Hero name word reveal */
+    .word-reveal {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .word-reveal span {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: wordSlide 0.8s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes wordSlide {
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Badge shimmer */
+    .shimmer-badge {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-badge::after {
       content: '';
       position: absolute;
       inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Typed cursor */
+    .cursor { animation: blink 1.1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── CARDS ─── */
+    .g-card {
+      position: relative;
+      background: var(--surface);
+      border-radius: 1rem;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .g-card::before {
+      content: '';
+      position: absolute; inset: 0;
       border-radius: 1rem;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(99,102,241,0.35) 0%, rgba(56,189,248,0.1) 50%, rgba(99,102,241,0.05) 100%);
+      background: linear-gradient(135deg,
+        rgba(99,102,241,0.35) 0%,
+        rgba(56,189,248,0.12) 50%,
+        rgba(99,102,241,0.06) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
+      transition: background 0.3s;
     }
     .g-card:hover::before {
-      background: linear-gradient(135deg, rgba(99,102,241,0.6) 0%, rgba(56,189,248,0.25) 50%, rgba(99,102,241,0.15) 100%);
+      background: linear-gradient(135deg,
+        rgba(99,102,241,0.7) 0%,
+        rgba(56,189,248,0.3) 50%,
+        rgba(167,139,250,0.2) 100%);
     }
+    /* Card inner glow on hover */
+    .g-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 1rem;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%),
+        rgba(99,102,241,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .g-card:hover::after { opacity: 1; }
 
-    /* Reveal animations */
+    /* ─── REVEAL ANIMATIONS ─── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(.16,1,.3,1), transform 0.65s cubic-bezier(.16,1,.3,1);
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
     }
     .reveal.vis { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
 
-    /* Skill tags */
+    /* Clip reveal for section headings */
+    .clip-reveal {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .clip-reveal.vis { clip-path: inset(0 0 0% 0); }
+
+    /* ─── COUNTER POP ─── */
+    @keyframes pop {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.18); }
+      100% { transform: scale(1); }
+    }
+    .count-pop { animation: pop 0.45s cubic-bezier(.16,1,.3,1); }
+
+    /* ─── SKILL TAGS ─── */
     .s-tag {
       display: inline-flex;
       align-items: center;
@@ -99,51 +250,138 @@
       background: rgba(99,102,241,0.08);
       border: 1px solid rgba(99,102,241,0.22);
       color: #a5b4fc;
-      transition: all 0.2s;
+      opacity: 0;
+      transform: scale(0.85) translateY(6px);
+      transition: background 0.2s, border-color 0.2s, color 0.2s,
+                  box-shadow 0.2s, opacity 0s, transform 0s;
+    }
+    .s-tag.tag-vis {
+      animation: tagPop 0.5s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes tagPop {
+      to { opacity: 1; transform: none; }
     }
     .s-tag:hover {
-      background: rgba(99,102,241,0.18);
-      border-color: rgba(99,102,241,0.5);
+      background: rgba(99,102,241,0.2);
+      border-color: rgba(99,102,241,0.55);
       color: #c7d2fe;
+      box-shadow: 0 0 16px rgba(99,102,241,0.2);
     }
 
-    /* Nav links */
-    .nav-a { color: #64748b; transition: color 0.2s; }
-    .nav-a:hover, .nav-a.active { color: #e2e8f0; }
+    /* ─── TIMELINE LINE ─── */
+    .exp-timeline {
+      position: relative;
+    }
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 28px;
+      bottom: 28px;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        rgba(99,102,241,0.6),
+        rgba(56,189,248,0.4),
+        rgba(167,139,250,0.3),
+        transparent);
+    }
+    @media (max-width: 768px) {
+      .exp-timeline::before { display: none; }
+    }
 
-    /* Scrollbar */
+    /* ─── NAV ─── */
+    .nav-a { color: #64748b; transition: color 0.2s; position: relative; }
+    .nav-a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: #818cf8;
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    .nav-a:hover { color: #e2e8f0; }
+    .nav-a:hover::after, .nav-a.active::after { transform: scaleX(1); }
+    .nav-a.active { color: #e2e8f0; }
+
+    /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #05080f; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: #312e81; border-radius: 2px; }
 
-    /* Back to top */
+    /* ─── BACK TO TOP ─── */
     #btt {
-      opacity: 0;
-      transform: translateY(12px);
+      opacity: 0; transform: translateY(14px);
       transition: opacity 0.3s, transform 0.3s;
     }
     #btt.show { opacity: 1; transform: none; }
 
-    /* Typed cursor */
-    .cursor { animation: blink 1.1s step-end infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    /* Mobile menu */
+    /* ─── MOBILE MENU ─── */
     #mob-menu { display: none; }
     #mob-menu.open { display: block; }
 
-    /* Alt section bg */
-    .alt-bg { background: rgba(255,255,255,0.012); }
+    /* ─── SECTION BG ALT ─── */
+    .alt-bg { background: rgba(255,255,255,0.013); }
+
+    /* ─── PAGE LOAD FADE ─── */
+    body { animation: pageFade 0.6s ease both; }
+    @keyframes pageFade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── CONTACT GLOW RING ─── */
+    .glow-ring {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(99,102,241,0.12);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: ringPulse 4s ease-in-out infinite;
+    }
+    .glow-ring-2 {
+      width: 800px; height: 800px;
+      border-color: rgba(99,102,241,0.06);
+      animation: ringPulse 4s ease-in-out infinite 1s;
+    }
+    @keyframes ringPulse {
+      0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: 1; }
+      50%      { transform: translate(-50%,-50%) scale(1.05); opacity: 0.6; }
+    }
+
+    /* Impact stat wrapper hover */
+    .stat-wrap {
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+      cursor: default;
+    }
+    .stat-wrap:hover { transform: translateY(-4px); }
+
+    /* About photo wrapper glow */
+    .photo-glow {
+      position: absolute; inset: -20px;
+      border-radius: 1.5rem;
+      background: radial-gradient(ellipse at center, rgba(99,102,241,0.12) 0%, transparent 70%);
+      z-index: -1;
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- Scroll progress bar -->
+  <div id="scroll-bar"></div>
+
+  <!-- Cursor glow (desktop only) -->
+  <div id="cursor-glow"></div>
+
   <!-- ─── NAVBAR ─── -->
-  <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/5" style="backdrop-filter:blur(20px); background:rgba(5,8,15,0.75);">
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-white/5 transition-all duration-300"
+       style="backdrop-filter:blur(20px); background:rgba(5,8,15,0.75);">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-      <a href="#hero" class="font-display font-900 text-lg text-white tracking-tight">SR</a>
+      <a href="#hero" class="font-display font-900 text-lg tracking-tight"
+         style="background:linear-gradient(135deg,#a5b4fc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SR</a>
 
       <ul class="hidden md:flex items-center gap-7 text-sm">
         <li><a href="#about"        class="nav-a">About</a></li>
@@ -156,12 +394,12 @@
       </ul>
 
       <a href="mailto:saurabhraj.apps@gmail.com"
-         class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white transition-all"
-         style="background:linear-gradient(135deg,#4f46e5,#6366f1);">
+         class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white transition-all hover:scale-105 hover:shadow-lg"
+         style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 20px rgba(99,102,241,0.25);">
         Get in touch
       </a>
 
-      <button id="mob-toggle" class="md:hidden text-slate-400 hover:text-white p-1">
+      <button id="mob-toggle" class="md:hidden text-slate-400 hover:text-white p-1 transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -170,67 +408,76 @@
 
     <div id="mob-menu" class="md:hidden border-t border-white/5" style="background:rgba(5,8,15,0.97);">
       <ul class="flex flex-col px-6 py-5 gap-5 text-sm">
-        <li><a href="#about"        class="text-slate-400 hover:text-white">About</a></li>
-        <li><a href="#experience"   class="text-slate-400 hover:text-white">Experience</a></li>
-        <li><a href="#skills"       class="text-slate-400 hover:text-white">Skills</a></li>
-        <li><a href="#education"    class="text-slate-400 hover:text-white">Education</a></li>
-        <li><a href="#community"    class="text-slate-400 hover:text-white">Leadership</a></li>
-        <li><a href="#testimonials" class="text-slate-400 hover:text-white">Testimonials</a></li>
-        <li><a href="#contact"      class="text-slate-400 hover:text-white">Contact</a></li>
+        <li><a href="#about"        class="text-slate-400 hover:text-white transition-colors">About</a></li>
+        <li><a href="#experience"   class="text-slate-400 hover:text-white transition-colors">Experience</a></li>
+        <li><a href="#skills"       class="text-slate-400 hover:text-white transition-colors">Skills</a></li>
+        <li><a href="#education"    class="text-slate-400 hover:text-white transition-colors">Education</a></li>
+        <li><a href="#community"    class="text-slate-400 hover:text-white transition-colors">Leadership</a></li>
+        <li><a href="#testimonials" class="text-slate-400 hover:text-white transition-colors">Testimonials</a></li>
+        <li><a href="#contact"      class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- ─── HERO ─── -->
   <section id="hero" class="hero-bg grid-overlay min-h-screen flex items-center justify-center relative overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center relative z-10">
 
-      <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8"
-           style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);color:#a5b4fc;">
-        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+    <!-- Floating orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="max-w-5xl mx-auto px-6 pt-28 pb-24 text-center relative z-10">
+
+      <!-- Darden badge with shimmer -->
+      <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8 shimmer-badge"
+           style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0"></span>
         Incoming MBA &nbsp;·&nbsp; UVA Darden School of Business
       </div>
 
-      <h1 class="reveal reveal-delay-1 font-display font-900 text-white tracking-tight mb-5"
-          style="font-size:clamp(3rem,10vw,6.5rem);line-height:1.0;">
-        Saurabh Raj
+      <!-- Name — word-by-word reveal -->
+      <h1 class="font-display font-900 text-white tracking-tight mb-5"
+          style="font-size:clamp(3.2rem,10vw,7rem);line-height:1.0;">
+        <span class="word-reveal" style="margin-right:0.25em;"><span style="animation-delay:0.15s">Saurabh</span></span>
+        <span class="word-reveal"><span style="animation-delay:0.3s">Raj</span></span>
       </h1>
 
+      <!-- Typed subtitle -->
       <p class="reveal reveal-delay-2 text-slate-400 text-lg md:text-xl mb-4">
         Senior PM – Artificial Intelligence &nbsp;·&nbsp;
         <span id="typed" class="text-indigo-400 font-medium"></span><span class="cursor text-indigo-400 font-light">|</span>
       </p>
 
+      <!-- Tagline -->
       <p class="reveal reveal-delay-3 text-slate-500 max-w-xl mx-auto text-base mb-12 leading-relaxed">
         Building AI products that move the needle. $1M contract at Voicing.ai, top 1%ile PM at Sprinklr, IIT Guwahati → UVA Darden.
       </p>
 
+      <!-- CTAs -->
       <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#experience"
-           class="px-8 py-3.5 rounded-full text-white font-semibold text-sm transition-all hover:scale-105"
-           style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 30px rgba(99,102,241,0.3);">
+           class="px-8 py-3.5 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 hover:shadow-xl"
+           style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 30px rgba(99,102,241,0.35);">
           View My Work
         </a>
         <a href="https://github.com/saurabhraj-115" target="_blank" rel="noopener noreferrer"
-           class="px-8 py-3.5 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all flex items-center gap-2"
-           style="border:1px solid rgba(255,255,255,0.1);">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
+           class="px-8 py-3.5 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all hover:border-white/30 hover:bg-white/5 flex items-center gap-2"
+           style="border:1px solid rgba(255,255,255,0.12);">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           GitHub
         </a>
         <a href="https://www.linkedin.com/in/saurabhraj-ac/" target="_blank" rel="noopener noreferrer"
-           class="px-8 py-3.5 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all flex items-center gap-2"
-           style="border:1px solid rgba(255,255,255,0.1);">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+           class="px-8 py-3.5 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all hover:border-white/30 hover:bg-white/5 flex items-center gap-2"
+           style="border:1px solid rgba(255,255,255,0.12);">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
       </div>
 
     </div>
 
+    <!-- Scroll hint -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-700 animate-bounce">
       <span class="text-[10px] uppercase tracking-widest">scroll</span>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,25 +487,41 @@
   </section>
 
   <!-- ─── IMPACT NUMBERS ─── -->
-  <section class="py-16 border-y border-white/5 alt-bg">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="py-16 border-y border-white/5 alt-bg relative overflow-hidden">
+    <!-- Subtle glow behind stats -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background:radial-gradient(ellipse 60% 80% at 50% 50%, rgba(99,102,241,0.04) 0%, transparent 70%);"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-        <div class="text-center reveal">
-          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">$<span data-count="1">0</span>M</div>
+
+        <div class="stat-wrap text-center reveal">
+          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">
+            $<span class="count-el" data-count="1">0</span>M
+          </div>
           <p class="text-slate-500 text-sm leading-snug">First contract closed<br>at Voicing.ai</p>
         </div>
-        <div class="text-center reveal reveal-delay-1">
-          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;"><span data-count="2">0</span>×</div>
+
+        <div class="stat-wrap text-center reveal reveal-delay-1">
+          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">
+            <span class="count-el" data-count="2">0</span>×
+          </div>
           <p class="text-slate-500 text-sm leading-snug">Promotions in 24 months<br><span class="text-slate-600 text-xs">(avg: 30 months)</span></p>
         </div>
-        <div class="text-center reveal reveal-delay-2">
-          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">$<span data-count="30">0</span>B+</div>
+
+        <div class="stat-wrap text-center reveal reveal-delay-2">
+          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">
+            $<span class="count-el" data-count="30">0</span>B+
+          </div>
           <p class="text-slate-500 text-sm leading-snug">SMB market unlocked<br>via Social Lite</p>
         </div>
-        <div class="text-center reveal reveal-delay-3">
-          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;"><span data-count="80">0</span>%</div>
+
+        <div class="stat-wrap text-center reveal reveal-delay-3">
+          <div class="font-display font-900 g-text mb-2" style="font-size:2.8rem;">
+            <span class="count-el" data-count="80">0</span>%
+          </div>
           <p class="text-slate-500 text-sm leading-snug">First-contact resolution<br>with AI voice agents</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -268,25 +531,29 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-16 items-center">
 
+        <!-- Photo -->
         <div class="relative reveal">
-          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:4/5;">
+          <div class="photo-glow"></div>
+          <div class="rounded-2xl overflow-hidden relative" style="aspect-ratio:4/5;">
             <img src="assets/img/20230305_171752_2.jpg" alt="Saurabh Raj"
-                 class="w-full h-full object-cover object-top"
+                 class="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
                  onerror="this.parentElement.style.background='#0c1220';this.style.display='none'">
-            <div class="absolute inset-0" style="background:linear-gradient(to top, #05080f 0%, transparent 40%);"></div>
+            <div class="absolute inset-0" style="background:linear-gradient(to top, #05080f 0%, transparent 45%);"></div>
           </div>
-          <div class="absolute -bottom-5 -right-5 g-card p-4 shadow-xl">
+          <!-- Floating cards -->
+          <div class="absolute -bottom-5 -right-5 g-card p-4 shadow-2xl hover:scale-105 transition-transform duration-300">
             <p class="text-slate-500 text-xs mb-0.5">Currently</p>
             <p class="text-white font-semibold text-sm">Senior PM – AI</p>
             <p class="text-indigo-400 text-xs font-medium">Voicing.ai</p>
           </div>
-          <div class="absolute -top-5 -left-5 g-card p-4 shadow-xl">
+          <div class="absolute -top-5 -left-5 g-card p-4 shadow-2xl hover:scale-105 transition-transform duration-300">
             <p class="text-slate-500 text-xs mb-0.5">Incoming MBA</p>
             <p class="text-white font-semibold text-sm">UVA Darden</p>
             <p class="text-sky-400 text-xs font-medium">Class of 2027</p>
           </div>
         </div>
 
+        <!-- Bio -->
         <div class="reveal reveal-delay-1">
           <p class="text-indigo-400 text-xs font-semibold uppercase tracking-widest mb-4">About Me</p>
           <h2 class="font-display font-900 text-white text-4xl leading-tight mb-6">
@@ -299,36 +566,36 @@
             spearhead enterprise AI voice agents serving 50,000+ daily passengers in 12+ languages.
           </p>
           <p class="text-slate-400 leading-relaxed mb-4">
-            Before that, I spent 3+ years at <span class="text-white font-medium">Sprinklr</span>
-            (valued $2.7B), rising from analyst to PM in 24 months — half the company average —
-            unlocking a <span class="text-white font-medium">$30B+ SMB market</span> and building
-            the world's first social-centric CCaaS tool for 150M+ businesses.
+            Before that, 3+ years at <span class="text-white font-medium">Sprinklr</span> ($2.7B),
+            rising from analyst to PM in 24 months — half the company average —
+            unlocking a <span class="text-white font-medium">$30B+ SMB market</span>.
           </p>
           <p class="text-slate-400 leading-relaxed mb-10">
-            <span class="text-white font-medium">IIT Guwahati</span> graduate &amp; NTSE Scholar.
+            <span class="text-white font-medium">IIT Guwahati</span> grad &amp; NTSE Scholar.
             Incoming <span class="text-white font-medium">MBA at UVA Darden</span>. I care deeply
-            about products that create outsized impact — for businesses and communities alike.
+            about products that create outsized impact.
           </p>
 
           <div class="grid grid-cols-2 gap-3">
-            <div class="g-card p-4">
+            <div class="g-card p-4 hover:scale-[1.02] transition-transform duration-200">
               <p class="text-slate-600 text-xs mb-1">Location</p>
               <p class="text-white text-sm font-medium">Bangalore, India</p>
             </div>
-            <div class="g-card p-4">
+            <div class="g-card p-4 hover:scale-[1.02] transition-transform duration-200">
               <p class="text-slate-600 text-xs mb-1">Education</p>
               <p class="text-white text-sm font-medium">IIT-G &nbsp;·&nbsp; UVA Darden</p>
             </div>
-            <div class="g-card p-4">
+            <div class="g-card p-4 hover:scale-[1.02] transition-transform duration-200">
               <p class="text-slate-600 text-xs mb-1">Specialization</p>
               <p class="text-white text-sm font-medium">AI · Product · Growth</p>
             </div>
-            <div class="g-card p-4">
+            <div class="g-card p-4 hover:scale-[1.02] transition-transform duration-200">
               <p class="text-slate-600 text-xs mb-1">Email</p>
               <p class="text-white text-sm font-medium truncate">saurabhraj.apps@gmail.com</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -342,10 +609,15 @@
         <h2 class="font-display font-900 text-white text-4xl">Experience</h2>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-6 exp-timeline pl-0 md:pl-14">
 
         <!-- Voicing.ai -->
-        <div class="g-card p-8 reveal transition-all duration-300 hover:scale-[1.005]">
+        <div class="g-card p-8 reveal tilt-card transition-all duration-300 relative">
+          <!-- Timeline dot -->
+          <div class="hidden md:flex absolute -left-14 top-8 w-8 h-8 rounded-full items-center justify-center z-10"
+               style="background:#0c1220;border:2px solid #6366f1;box-shadow:0 0 12px rgba(99,102,241,0.5);">
+            <div class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></div>
+          </div>
           <div class="flex flex-col md:flex-row md:items-start gap-6">
             <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-indigo-400"
                  style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);">V</div>
@@ -362,29 +634,27 @@
                   Jul 2025 – Present · Bangalore
                 </span>
               </div>
-
               <div class="rounded-xl p-4 mb-5" style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);">
                 <p class="text-indigo-300 text-sm font-medium">
-                  Secured the company's first $1M contract within 2 months of joining — largest deal in company history.
+                  Secured the company's first $1M contract within 2 months — largest deal in company history.
                 </p>
               </div>
-
               <ul class="space-y-3">
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-indigo-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Spearheaded AI voice agent solutioning across resort booking, airport ops &amp; employee care — driving
+                  Spearheaded AI voice agent solutioning across resort booking, airport ops &amp; employee care —
                   <strong class="text-white font-semibold"> 50% reduction in operational costs</strong> and
                   <strong class="text-white font-semibold"> 80% first-contact resolution</strong>.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-indigo-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Architected AI-powered CIO cockpit for Fortune 500 clients managing $2M+ budgets — LLM-driven root cause analysis &amp; predictive maintenance preventing
-                  <strong class="text-white font-semibold"> $5M+ in downtime costs</strong>, resolution time reduced 50–80%.
+                  Architected AI-powered CIO cockpit for Fortune 500 clients — LLM-driven RCA &amp; predictive maintenance preventing
+                  <strong class="text-white font-semibold"> $5M+ in downtime costs</strong>, resolution time cut 50–80%.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-indigo-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Deployed multilingual voice agents for major international airports handling
-                  <strong class="text-white font-semibold"> 50,000+ daily passenger inquiries</strong> in 12+ languages — 85% resolution without human intervention, 75% wait-time reduction, 24/7.
+                  Deployed multilingual voice agents for international airports handling
+                  <strong class="text-white font-semibold"> 50,000+ daily inquiries</strong> in 12+ languages — 85% resolution without human intervention, 75% wait-time reduction.
                 </li>
               </ul>
             </div>
@@ -392,17 +662,18 @@
         </div>
 
         <!-- Sprinklr -->
-        <div class="g-card p-8 reveal reveal-delay-1 transition-all duration-300 hover:scale-[1.005]">
+        <div class="g-card p-8 reveal reveal-delay-1 tilt-card transition-all duration-300 relative">
+          <div class="hidden md:flex absolute -left-14 top-8 w-8 h-8 rounded-full items-center justify-center z-10"
+               style="background:#0c1220;border:2px solid #38bdf8;box-shadow:0 0 12px rgba(56,189,248,0.4);">
+            <div class="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
+          </div>
           <div class="flex flex-col md:flex-row md:items-start gap-6">
             <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-cyan-400"
                  style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);">S</div>
             <div class="flex-1 min-w-0">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
                 <div>
-                  <h3 class="text-white text-lg font-semibold">
-                    Product Manager
-                    <span class="text-slate-500 font-normal text-sm"> → APM → Sr. Product Analyst</span>
-                  </h3>
+                  <h3 class="text-white text-lg font-semibold">Product Manager <span class="text-slate-500 font-normal text-sm">→ APM → Sr. Analyst</span></h3>
                   <p class="text-cyan-400 font-medium">Sprinklr</p>
                   <p class="text-slate-600 text-sm">Unified Social Media Management &nbsp;·&nbsp; Valued $2.7B</p>
                 </div>
@@ -411,32 +682,30 @@
                   Apr 2022 – Jul 2025 · Gurugram
                 </span>
               </div>
-
               <div class="rounded-xl p-4 mb-5" style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.15);">
                 <p class="text-cyan-300 text-sm font-medium">
                   Consistently rated top 1%ile — 2 promotions in 24 months (company average: 30 months).
                 </p>
               </div>
-
               <ul class="space-y-3">
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-cyan-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Built <strong class="text-white">"Social Lite"</strong> — first-of-its-kind SMB social media tool at 10% lower cost than industry, unlocking a
+                  Built <strong class="text-white">"Social Lite"</strong> — first-of-its-kind SMB tool at 10% lower cost, unlocking a
                   <strong class="text-white font-semibold"> $30B+ SMB market</strong> targeting $65M+ ARR by 2030.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-cyan-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Led acquisition of <strong class="text-white font-semibold">250+ B2B SMB clients worth $2.5M</strong>, cutting their operational costs by 60% saving $40M/year.
+                  Led acquisition of <strong class="text-white font-semibold">250+ B2B SMB clients worth $2.5M</strong>, cutting their costs by 60% saving $40M/year.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-cyan-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Pioneered world's first social-centric CCaaS covering <strong class="text-white font-semibold">17+ social channels</strong> for 150M+ SMBs — AI chatbots, automated routing &amp; LLM live chat saving
+                  Pioneered world's first social-centric CCaaS covering <strong class="text-white font-semibold">17+ channels</strong> for 150M+ SMBs — AI chatbots &amp; LLM live chat saving
                   <strong class="text-white font-semibold"> $480K annually</strong> across 45+ brands.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-cyan-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Drove third-party integrations reducing turnaround time 50% and service escalations 80%, securing
-                  <strong class="text-white font-semibold"> $7M in new contracts</strong> from legacy system clients.
+                  Third-party integrations cut turnaround 50%, escalations 80% — securing
+                  <strong class="text-white font-semibold"> $7M in new contracts</strong>.
                 </li>
               </ul>
             </div>
@@ -444,17 +713,18 @@
         </div>
 
         <!-- Wipro -->
-        <div class="g-card p-8 reveal reveal-delay-2 transition-all duration-300 hover:scale-[1.005]">
+        <div class="g-card p-8 reveal reveal-delay-2 tilt-card transition-all duration-300 relative">
+          <div class="hidden md:flex absolute -left-14 top-8 w-8 h-8 rounded-full items-center justify-center z-10"
+               style="background:#0c1220;border:2px solid #a78bfa;box-shadow:0 0 12px rgba(167,139,250,0.35);">
+            <div class="w-2.5 h-2.5 rounded-full bg-violet-400"></div>
+          </div>
           <div class="flex flex-col md:flex-row md:items-start gap-6">
             <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-violet-400"
                  style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);">W</div>
             <div class="flex-1 min-w-0">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
                 <div>
-                  <h3 class="text-white text-lg font-semibold">
-                    Associate Consultant
-                    <span class="text-slate-500 font-normal text-sm"> → Project Engineer</span>
-                  </h3>
+                  <h3 class="text-white text-lg font-semibold">Associate Consultant <span class="text-slate-500 font-normal text-sm">→ Project Engineer</span></h3>
                   <p class="text-violet-400 font-medium">Wipro Technologies</p>
                   <p class="text-slate-600 text-sm">Top IT Consulting &nbsp;·&nbsp; Valued $33B+</p>
                 </div>
@@ -463,19 +733,18 @@
                   Jul 2019 – Mar 2022 · Bangalore
                 </span>
               </div>
-
               <ul class="space-y-3">
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-violet-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Directed secure migration of <strong class="text-white font-semibold">15M medical records</strong> for a $200B pharma client, saving <strong class="text-white font-semibold">$20M in compliance risks</strong> and unlocking $2M in ARR.
+                  Directed secure migration of <strong class="text-white font-semibold">15M medical records</strong> for a $200B pharma client — saved <strong class="text-white font-semibold">$20M in compliance risks</strong>.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-violet-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Streamlined Access Management for <strong class="text-white font-semibold">8,000+ Canadian Government employees</strong> in security-sensitive domains — reduced access denial incidents 30%, secured $2M upsell.
+                  Access management for <strong class="text-white font-semibold">8,000+ Canadian Government employees</strong> — cut access denials 30%, secured $2M upsell.
                 </li>
                 <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                   <span class="text-violet-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                  Engineered automated data archiving system generating <strong class="text-white font-semibold">$125K in annual savings</strong> and cutting 8 man-hours/month for a $200B chip manufacturing client.
+                  Automated data archiving generating <strong class="text-white font-semibold">$125K in annual savings</strong>, cutting 8 man-hours/month.
                 </li>
               </ul>
             </div>
@@ -495,9 +764,10 @@
         <h2 class="font-display font-900 text-white text-4xl">Skills</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="reveal">
-          <h3 class="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+      <div class="grid md:grid-cols-3 gap-12">
+
+        <div class="reveal" data-tag-group>
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Product
           </h3>
           <div class="flex flex-wrap gap-2">
@@ -512,8 +782,8 @@
           </div>
         </div>
 
-        <div class="reveal reveal-delay-1">
-          <h3 class="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+        <div class="reveal reveal-delay-1" data-tag-group>
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-sky-400"></span> AI &amp; Technical
           </h3>
           <div class="flex flex-wrap gap-2">
@@ -528,8 +798,8 @@
           </div>
         </div>
 
-        <div class="reveal reveal-delay-2">
-          <h3 class="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+        <div class="reveal reveal-delay-2" data-tag-group>
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-violet-400"></span> Design &amp; Growth
           </h3>
           <div class="flex flex-wrap gap-2">
@@ -542,6 +812,7 @@
             <span class="s-tag">0 → 1 Products</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -557,13 +828,13 @@
 
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-        <div class="g-card p-8 reveal transition-all duration-300 hover:scale-[1.02]">
+        <div class="g-card p-8 reveal tilt-card transition-all duration-300">
           <div class="flex items-start gap-4 mb-5">
             <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl"
                  style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);">🎓</div>
             <div>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold mb-2"
-                    style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);color:#a5b4fc;">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold mb-2 shimmer-badge"
+                    style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;">
                 <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
                 Incoming
               </span>
@@ -573,11 +844,11 @@
             </div>
           </div>
           <p class="text-slate-500 text-sm leading-relaxed">
-            One of the world's premier business schools — consistently ranked #1 for Teaching Quality and MBA experience. Incoming cohort.
+            Ranked #1 for Teaching Quality globally. One of the most immersive MBA programs in the world. Incoming cohort.
           </p>
         </div>
 
-        <div class="g-card p-8 reveal reveal-delay-1 transition-all duration-300 hover:scale-[1.02]">
+        <div class="g-card p-8 reveal reveal-delay-1 tilt-card transition-all duration-300">
           <div class="flex items-start gap-4 mb-5">
             <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl"
                  style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);">⚡</div>
@@ -592,11 +863,11 @@
           <ul class="space-y-2.5">
             <li class="flex gap-2 text-slate-500 text-sm leading-relaxed">
               <span class="text-cyan-600 flex-shrink-0 mt-0.5">▸</span>
-              Head of Model UN — organised first International MUN in North East India (8 countries, ₹250K revenue, +66% YoY).
+              Head of Model UN — first International MUN in North East India (8 countries, ₹250K revenue, +66% YoY).
             </li>
             <li class="flex gap-2 text-slate-500 text-sm leading-relaxed">
               <span class="text-cyan-600 flex-shrink-0 mt-0.5">▸</span>
-              AIESEC International Volunteer, Turkey 2016 — led 17 volunteers through a military coup executing UN SDG projects.
+              AIESEC Volunteer, Turkey 2016 — led 17 volunteers through a military coup on UN SDG projects.
             </li>
           </ul>
         </div>
@@ -605,7 +876,7 @@
     </div>
   </section>
 
-  <!-- ─── COMMUNITY LEADERSHIP ─── -->
+  <!-- ─── COMMUNITY ─── -->
   <section id="community" class="py-28">
     <div class="max-w-6xl mx-auto px-6">
 
@@ -614,7 +885,7 @@
         <h2 class="font-display font-900 text-white text-4xl">Community Leadership</h2>
       </div>
 
-      <div class="g-card p-8 max-w-3xl mx-auto reveal transition-all duration-300 hover:scale-[1.01]">
+      <div class="g-card p-8 max-w-3xl mx-auto reveal tilt-card transition-all duration-300">
         <div class="flex flex-col md:flex-row md:items-start gap-6">
           <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl"
                style="background:rgba(251,113,133,0.1);border:1px solid rgba(251,113,133,0.2);">🌿</div>
@@ -633,13 +904,13 @@
             <ul class="space-y-3">
               <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                 <span class="text-rose-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                Led grant-fed initiative to eradicate period poverty in tribal villages — reached
-                <strong class="text-white font-semibold"> 1,500 women and girls</strong>, reducing cloth-based menstrual practices by 50%.
+                Led initiative to eradicate period poverty in tribal villages — reached
+                <strong class="text-white font-semibold"> 1,500 women and girls</strong>, reducing cloth-based practices by 50%.
               </li>
               <li class="flex gap-3 text-slate-400 text-sm leading-relaxed">
                 <span class="text-rose-500 mt-0.5 flex-shrink-0 font-bold">▸</span>
-                Strategized a brand portfolio to promote Kohvar and Sohrai tribal art — targeting
-                <strong class="text-white font-semibold"> 500+ artisans</strong> with marketplace access, increasing monthly income by 50% by 2028.
+                Promoted Kohvar &amp; Sohrai tribal art — targeting
+                <strong class="text-white font-semibold"> 500+ artisans</strong>, increasing monthly income by 50% by 2028.
               </li>
             </ul>
           </div>
@@ -659,15 +930,14 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div class="g-card p-6 flex flex-col reveal">
-          <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <div class="g-card p-6 flex flex-col reveal tilt-card">
+          <div class="text-yellow-400 text-sm mb-4 tracking-wide">★★★★★</div>
           <p class="text-slate-400 text-sm leading-relaxed flex-1 mb-6">
             "Saurabh is an excellent task manager. A rock solid work ethic and a strong sense of responsibility makes him an invaluable leader. Aspires for his best and pushes others to do the same."
           </p>
           <div class="flex items-center gap-3">
             <img src="assets/img/testimonials/krispy.jpeg" alt="Krishna Yalamarthy"
-                 class="w-10 h-10 rounded-full object-cover bg-slate-700"
-                 onerror="this.style.display='none'">
+                 class="w-10 h-10 rounded-full object-cover bg-slate-700" onerror="this.style.display='none'">
             <div>
               <p class="text-white text-sm font-semibold">Krishna Yalamarthy</p>
               <p class="text-slate-500 text-xs">Architect · NVIDIA</p>
@@ -675,15 +945,14 @@
           </div>
         </div>
 
-        <div class="g-card p-6 flex flex-col reveal reveal-delay-1">
-          <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <div class="g-card p-6 flex flex-col reveal reveal-delay-1 tilt-card">
+          <div class="text-yellow-400 text-sm mb-4 tracking-wide">★★★★★</div>
           <p class="text-slate-400 text-sm leading-relaxed flex-1 mb-6">
             "Saurabh has a great eye for detail and creative story-telling. I thoroughly enjoyed working with him in drafting B2B Brand Guidelines for our GrowthX capstone project."
           </p>
           <div class="flex items-center gap-3">
             <img src="assets/img/testimonials/priyankap.jpeg" alt="Priyanka Peeramsetty"
-                 class="w-10 h-10 rounded-full object-cover bg-slate-700"
-                 onerror="this.style.display='none'">
+                 class="w-10 h-10 rounded-full object-cover bg-slate-700" onerror="this.style.display='none'">
             <div>
               <p class="text-white text-sm font-semibold">Priyanka Peeramsetty</p>
               <p class="text-slate-500 text-xs">Chief of Staff · inFeedo</p>
@@ -691,15 +960,14 @@
           </div>
         </div>
 
-        <div class="g-card p-6 flex flex-col reveal reveal-delay-2">
-          <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <div class="g-card p-6 flex flex-col reveal reveal-delay-2 tilt-card">
+          <div class="text-yellow-400 text-sm mb-4 tracking-wide">★★★★★</div>
           <p class="text-slate-400 text-sm leading-relaxed flex-1 mb-6">
             "He conceptualized and shot an ad using his phone — first time he'd done it, and it was a big hit. His clarity around problem statements is something we all learnt from."
           </p>
           <div class="flex items-center gap-3">
             <img src="assets/img/testimonials/swarnendu.jpeg" alt="Swarnendu Dutta"
-                 class="w-10 h-10 rounded-full object-cover bg-slate-700"
-                 onerror="this.style.display='none'">
+                 class="w-10 h-10 rounded-full object-cover bg-slate-700" onerror="this.style.display='none'">
             <div>
               <p class="text-white text-sm font-semibold">Swarnendu Dutta</p>
               <p class="text-slate-500 text-xs">Marketing Ops Lead · Outplay</p>
@@ -707,15 +975,14 @@
           </div>
         </div>
 
-        <div class="g-card p-6 flex flex-col reveal">
-          <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <div class="g-card p-6 flex flex-col reveal tilt-card">
+          <div class="text-yellow-400 text-sm mb-4 tracking-wide">★★★★★</div>
           <p class="text-slate-400 text-sm leading-relaxed flex-1 mb-6">
             "His management skills are commendable. His leadership is capable of successfully leading teams through acute situations."
           </p>
           <div class="flex items-center gap-3">
             <img src="assets/img/testimonials/paridhi.jpeg" alt="Paridhi Kothari"
-                 class="w-10 h-10 rounded-full object-cover bg-slate-700"
-                 onerror="this.style.display='none'">
+                 class="w-10 h-10 rounded-full object-cover bg-slate-700" onerror="this.style.display='none'">
             <div>
               <p class="text-white text-sm font-semibold">Paridhi Kothari</p>
               <p class="text-slate-500 text-xs">MSc Behavioural Science · Warwick</p>
@@ -723,15 +990,14 @@
           </div>
         </div>
 
-        <div class="g-card p-6 flex flex-col reveal reveal-delay-1 md:col-span-2 lg:col-span-2">
-          <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <div class="g-card p-6 flex flex-col reveal reveal-delay-1 tilt-card md:col-span-2 lg:col-span-2">
+          <div class="text-yellow-400 text-sm mb-4 tracking-wide">★★★★★</div>
           <p class="text-slate-400 text-sm leading-relaxed flex-1 mb-6">
             "As the one leading the project, I knew Saurabh is one person I can completely rely on. The turnaround was short, pressure was high — but Saurabh did it, and how! The content he created was applauded by one and all. Working with him was fun and a breeze. I would love to work with him again."
           </p>
           <div class="flex items-center gap-3">
             <img src="assets/img/testimonials/kaveri1.jpeg" alt="Kaveri Das"
-                 class="w-10 h-10 rounded-full object-cover bg-slate-700"
-                 onerror="this.style.display='none'">
+                 class="w-10 h-10 rounded-full object-cover bg-slate-700" onerror="this.style.display='none'">
             <div>
               <p class="text-white text-sm font-semibold">Kaveri Das</p>
               <p class="text-slate-500 text-xs">VP Strategy &amp; Program Management · ZEE5</p>
@@ -744,8 +1010,12 @@
   </section>
 
   <!-- ─── CONTACT ─── -->
-  <section id="contact" class="py-28">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+  <section id="contact" class="py-28 relative overflow-hidden">
+    <!-- Glow rings -->
+    <div class="glow-ring pointer-events-none"></div>
+    <div class="glow-ring glow-ring-2 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
       <div class="reveal">
         <p class="text-indigo-400 text-xs font-semibold uppercase tracking-widest mb-4">Let's Talk</p>
         <h2 class="font-display font-900 text-white mb-5" style="font-size:clamp(2rem,6vw,3.5rem);line-height:1.1;">
@@ -757,16 +1027,16 @@
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
           <a href="mailto:saurabhraj.apps@gmail.com"
-             class="px-8 py-4 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 flex items-center gap-2"
-             style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 30px rgba(99,102,241,0.3);">
+             class="px-8 py-4 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 hover:shadow-2xl flex items-center gap-2"
+             style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 35px rgba(99,102,241,0.35);">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
             saurabhraj.apps@gmail.com
           </a>
           <a href="tel:+918210701205"
-             class="px-8 py-4 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all flex items-center gap-2"
-             style="border:1px solid rgba(255,255,255,0.1);">
+             class="px-8 py-4 rounded-full text-slate-300 hover:text-white font-semibold text-sm transition-all hover:bg-white/5 flex items-center gap-2"
+             style="border:1px solid rgba(255,255,255,0.12);">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
@@ -774,30 +1044,22 @@
           </a>
         </div>
 
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex items-center justify-center gap-7">
           <a href="https://github.com/saurabhraj-115" target="_blank" rel="noopener noreferrer"
-             class="text-slate-600 hover:text-white transition-colors" title="GitHub">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
+             class="text-slate-600 hover:text-white transition-all hover:scale-125 hover:-translate-y-1" title="GitHub">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/saurabhraj-ac/" target="_blank" rel="noopener noreferrer"
-             class="text-slate-600 hover:text-white transition-colors" title="LinkedIn">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
+             class="text-slate-600 hover:text-white transition-all hover:scale-125 hover:-translate-y-1" title="LinkedIn">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
           <a href="https://twitter.com/_parabellum___" target="_blank" rel="noopener noreferrer"
-             class="text-slate-600 hover:text-white transition-colors" title="X / Twitter">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
+             class="text-slate-600 hover:text-white transition-all hover:scale-125 hover:-translate-y-1" title="X / Twitter">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="https://www.instagram.com/machiavelleee/" target="_blank" rel="noopener noreferrer"
-             class="text-slate-600 hover:text-white transition-colors" title="Instagram">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
+             class="text-slate-600 hover:text-white transition-all hover:scale-125 hover:-translate-y-1" title="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>
       </div>
@@ -808,79 +1070,158 @@
   <footer class="py-8 border-t border-white/5">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
       <p class="text-slate-700 text-sm">© 2026 Saurabh Raj</p>
-      <p class="text-slate-800 text-xs">Built from scratch · Hosted on GitHub Pages</p>
+      <p class="text-slate-800 text-xs">Built from scratch · GitHub Pages</p>
     </div>
   </footer>
 
   <!-- ─── BACK TO TOP ─── -->
   <a href="#hero" id="btt"
-     class="fixed bottom-8 right-8 w-10 h-10 rounded-full flex items-center justify-center text-white shadow-lg z-40"
-     style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 20px rgba(99,102,241,0.4);">
+     class="fixed bottom-8 right-8 w-10 h-10 rounded-full flex items-center justify-center text-white z-40 transition-all hover:scale-110"
+     style="background:linear-gradient(135deg,#4f46e5,#6366f1);box-shadow:0 0 20px rgba(99,102,241,0.45);">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
     </svg>
   </a>
 
+  <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
   <script>
-    // ── Typed text ──────────────────────────────────────────────
+  (() => {
+    'use strict';
+
+    // ── 1. SCROLL PROGRESS BAR ──────────────────────────────────────
+    const scrollBar = document.getElementById('scroll-bar');
+    function updateScrollBar() {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      scrollBar.style.width = Math.min(pct, 100) + '%';
+    }
+    window.addEventListener('scroll', updateScrollBar, { passive: true });
+
+    // ── 2. CURSOR GLOW (desktop only) ──────────────────────────────
+    const glow = document.getElementById('cursor-glow');
+    if (window.matchMedia('(pointer:fine)').matches) {
+      let glowX = 0, glowY = 0, curX = 0, curY = 0;
+      document.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
+      function animGlow() {
+        glowX += (curX - glowX) * 0.08;
+        glowY += (curY - glowY) * 0.08;
+        glow.style.left = glowX + 'px';
+        glow.style.top  = glowY + 'px';
+        requestAnimationFrame(animGlow);
+      }
+      animGlow();
+    } else {
+      glow.style.display = 'none';
+    }
+
+    // ── 3. TYPED TEXT (fixed delete bug) ───────────────────────────
     const roles = ['Voicing.ai', 'AI Product Builder', 'Growth Strategist', 'IIT Guwahati Alum', 'Darden MBA Incoming'];
     let ri = 0, ci = 0, del = false;
     const tel = document.getElementById('typed');
     function type() {
       const w = roles[ri];
       if (!del) {
-        tel.textContent = w.slice(0, ++ci);
-        if (ci > w.length) { del = true; setTimeout(type, 2200); return; }
+        ci++;
+        tel.textContent = w.slice(0, ci);
+        if (ci >= w.length) { del = true; setTimeout(type, 2400); return; }
       } else {
-        tel.textContent = w.slice(0, --ci);
-        if (ci < 0) { del = false; ri = (ri + 1) % roles.length; ci = 0; }
+        ci--;
+        tel.textContent = w.slice(0, ci);
+        if (ci <= 0) { del = false; ri = (ri + 1) % roles.length; ci = 0; }
       }
-      setTimeout(type, del ? 45 : 75);
+      setTimeout(type, del ? 42 : 72);
     }
-    type();
+    setTimeout(type, 1200);
 
-    // ── Scroll reveal ───────────────────────────────────────────
+    // ── 4. SCROLL REVEAL ───────────────────────────────────────────
     const revObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); revObs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('vis'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-    // ── Counter animation ───────────────────────────────────────
+    // ── 5. COUNTER ANIMATION with pop ─────────────────────────────
     function animCount(el, target) {
-      let n = 0; const step = target / 55;
+      const parent = el.closest('.font-display') || el.parentElement;
+      let n = 0;
+      const step = target / 60;
       const t = setInterval(() => {
         n = Math.min(n + step, target);
         el.textContent = Math.round(n);
-        if (n >= target) clearInterval(t);
-      }, 28);
+        if (n >= target) {
+          clearInterval(t);
+          parent.classList.add('count-pop');
+          setTimeout(() => parent.classList.remove('count-pop'), 500);
+        }
+      }, 25);
     }
-    const cntObs = new IntersectionObserver((entries) => {
+    const cObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) { animCount(e.target, +e.target.dataset.count); cntObs.unobserve(e.target); }
+        if (e.isIntersecting) {
+          animCount(e.target, +e.target.dataset.count);
+          cObs.unobserve(e.target);
+        }
       });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.count-el').forEach(el => cObs.observe(el));
 
-    // ── Mobile menu ─────────────────────────────────────────────
+    // ── 6. SKILL TAGS STAGGER ──────────────────────────────────────
+    const tagObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const tags = e.target.querySelectorAll('.s-tag');
+          tags.forEach((tag, i) => {
+            setTimeout(() => tag.classList.add('tag-vis'), i * 60);
+          });
+          tagObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('[data-tag-group]').forEach(g => tagObs.observe(g));
+
+    // ── 7. CARD MAGNETIC TILT ──────────────────────────────────────
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const cx = r.width / 2, cy = r.height / 2;
+        const rotX = ((y - cy) / cy) * -5;
+        const rotY = ((x - cx) / cx) *  5;
+        card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.018)`;
+        card.style.setProperty('--mx', (x / r.width * 100) + '%');
+        card.style.setProperty('--my', (y / r.height * 100) + '%');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.transition = 'transform 0.5s cubic-bezier(.16,1,.3,1)';
+        setTimeout(() => { card.style.transition = ''; }, 500);
+      });
+    });
+
+    // ── 8. MOBILE MENU ─────────────────────────────────────────────
     document.getElementById('mob-toggle').addEventListener('click', () => {
       document.getElementById('mob-menu').classList.toggle('open');
     });
-    document.querySelectorAll('#mob-menu a').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('mob-menu').classList.remove('open'));
-    });
+    document.querySelectorAll('#mob-menu a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('mob-menu').classList.remove('open'))
+    );
 
-    // ── Back to top ─────────────────────────────────────────────
+    // ── 9. BACK TO TOP ─────────────────────────────────────────────
     const btt = document.getElementById('btt');
     window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 500), { passive: true });
 
-    // ── Active nav highlight ─────────────────────────────────────
+    // ── 10. ACTIVE NAV HIGHLIGHT ───────────────────────────────────
     const secs = [...document.querySelectorAll('section[id]')];
     const navAs = document.querySelectorAll('.nav-a');
     window.addEventListener('scroll', () => {
       let cur = '';
-      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
       navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
     }, { passive: true });
+
+  })();
   </script>
+
 </body>
 </html>
