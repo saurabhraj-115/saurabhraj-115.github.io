@@ -310,8 +310,11 @@
     .tag:hover { background: color-mix(in srgb, var(--indigo) 20%, transparent); border-color: color-mix(in srgb, var(--indigo) 55%, transparent); color: var(--text); box-shadow: 0 0 16px rgba(99,102,241,0.2); }
 
     /* ── Projects ── */
-    .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-    .proj { padding: 24px; display: flex; flex-direction: column; }
+    .proj-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 22px; }
+    .proj { grid-column: span 2; padding: 24px; display: flex; flex-direction: column; }
+    /* center the trailing 2 cards (5 total) instead of left-aligning them */
+    .proj-grid > .proj:nth-child(4) { grid-column: 2 / span 2; }
+    .proj-grid > .proj:nth-child(5) { grid-column: 4 / span 2; }
     .proj-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 13px; }
     .proj-top .gh { color: var(--text-mut); transition: color .2s; } .proj:hover .gh { color: var(--text); }
     .proj-top .gh svg { width: 20px; height: 20px; }
@@ -390,6 +393,7 @@
       .about-grid { grid-template-columns: 1fr; gap: 60px; }
       .skills-grid { grid-template-columns: 1fr; gap: 34px; }
       .edu-grid, .tst-grid, .proj-grid { grid-template-columns: 1fr; }
+      .proj, .proj-grid > .proj:nth-child(4), .proj-grid > .proj:nth-child(5) { grid-column: auto; }
       .span2 { grid-column: span 1; }
       .stats-grid { grid-template-columns: repeat(2,1fr); gap: 26px 20px; }
       .sec-pad { padding: 72px 0; }
