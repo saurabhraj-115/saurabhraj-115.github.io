@@ -309,6 +309,34 @@
     @keyframes tagPop { to { opacity: 1; transform: none; } }
     .tag:hover { background: color-mix(in srgb, var(--indigo) 20%, transparent); border-color: color-mix(in srgb, var(--indigo) 55%, transparent); color: var(--text); box-shadow: 0 0 16px rgba(99,102,241,0.2); }
 
+    /* ── Projects ── */
+    .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .proj { padding: 24px; display: flex; flex-direction: column; }
+    .proj-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 13px; }
+    .proj-top .gh { color: var(--text-mut); transition: color .2s; } .proj:hover .gh { color: var(--text); }
+    .proj-top .gh svg { width: 20px; height: 20px; }
+    .proj-ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 1.15rem;
+      background: color-mix(in srgb, var(--indigo) 9%, transparent); border: 1px solid color-mix(in srgb, var(--indigo) 20%, transparent); }
+    .proj h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .proj h3 a { transition: color .2s; } .proj h3 a:hover { color: var(--indigo-l); }
+    .proj p { font-size: 0.85rem; color: var(--text-soft); flex: 1; margin-bottom: 15px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+    .proj-tag { font-size: 0.68rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-mut); }
+    .proj-links { display: flex; gap: 16px; font-size: 0.8rem; font-weight: 500; }
+    .proj-links a { color: var(--indigo-l); display: inline-flex; align-items: center; gap: 5px; transition: color .2s; }
+    .proj-links a:hover { color: var(--text); }
+    .proj-links svg { width: 14px; height: 14px; }
+    .proj-more { text-align: center; margin-top: 36px; }
+    .proj-more a { display: inline-flex; align-items: center; gap: 8px; color: var(--text-soft); font-weight: 500; font-size: 0.9rem; transition: color .2s; }
+    .proj-more a:hover { color: var(--text); }
+
+    /* ── Hobbies ── */
+    .hobbies { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 34px; }
+    .hobby { display: inline-flex; align-items: center; gap: 9px; padding: 10px 18px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border); font-size: 0.88rem; color: var(--text-soft); transition: transform .2s, border-color .2s; }
+    .hobby:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--indigo) 40%, transparent); }
+    .hobby .emo { font-size: 1.1rem; }
+
     /* ── Education ── */
     .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
     .edu { padding: 30px; }
@@ -361,7 +389,7 @@
       #hamburger { display: grid; }
       .about-grid { grid-template-columns: 1fr; gap: 60px; }
       .skills-grid { grid-template-columns: 1fr; gap: 34px; }
-      .edu-grid, .tst-grid { grid-template-columns: 1fr; }
+      .edu-grid, .tst-grid, .proj-grid { grid-template-columns: 1fr; }
       .span2 { grid-column: span 1; }
       .stats-grid { grid-template-columns: repeat(2,1fr); gap: 26px 20px; }
       .sec-pad { padding: 72px 0; }
@@ -393,6 +421,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
@@ -415,6 +444,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
@@ -613,6 +643,91 @@
     </div>
   </section>
 
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Built in public</p><h2>Open-Source Projects</h2></div>
+      <div class="proj-grid">
+
+        <div class="card proj reveal">
+          <div class="proj-top">
+            <div class="proj-ico">🕮</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener" aria-label="crossVerse on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener">crossVerse</a></h3>
+          <p>Ask any question, get answers from scripture — semantic search across 177,000 verses from 12 world religions, with cross-faith comparison and mood matching.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">RAG</span><span class="proj-tag">Claude</span><span class="proj-tag">Qdrant</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d1">
+          <div class="proj-top">
+            <div class="proj-ico">🤖</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener" aria-label="Gentigram on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener">Gentigram</a></h3>
+          <p>A browser-based social network where autonomous AI agents with distinct personalities scroll, post, and like — a live multi-agent simulation with its own recommendation engine.</p>
+          <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Multi-Agent</span><span class="proj-tag">GPT-4</span><span class="proj-tag">Node.js</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d2">
+          <div class="proj-top">
+            <div class="proj-ico">📹</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener" aria-label="camIA on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener">camIA</a></h3>
+          <p>AI-powered CCTV monitoring — OpenCV motion detection triggers Claude Vision to evaluate custom per-camera conditions and fire Telegram alerts, with a live web dashboard.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Claude Vision</span><span class="proj-tag">OpenCV</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal">
+          <div class="proj-top">
+            <div class="proj-ico">🛂</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/visa-social-cleanup" target="_blank" rel="noopener" aria-label="visa-social-cleanup on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/visa-social-cleanup" target="_blank" rel="noopener">visa-social-cleanup</a></h3>
+          <p>Scans social platforms for content that could raise flags at a US visa interview — Claude assesses the risks, builds an officer's dossier, and runs a mock interview to prep you.</p>
+          <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Claude</span><span class="proj-tag">Agentic</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/visa-social-cleanup" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d1">
+          <div class="proj-top">
+            <div class="proj-ico">💬</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener" aria-label="claudeLike on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener">claudeLike</a></h3>
+          <p>Privacy-first, self-hosted Claude chat — bring your own API key (never stored server-side), with conversation history, file uploads, and markdown rendering.</p>
+          <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">React</span><span class="proj-tag">Express</span><span class="proj-tag">PostgreSQL</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d2">
+          <div class="proj-top">
+            <div class="proj-ico">🧬</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener" aria-label="rnaseq-webapp on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener">rnaseq-webapp</a></h3>
+          <p>An RNA-seq differential-expression analysis platform that pits classical statistical pipelines against machine-learning models — deployed and running live.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">ML</span><span class="proj-tag">Bioinformatics</span></div>
+          <div class="proj-links">
+            <a href="https://rnaseq-webapp.fly.dev" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg> Live</a>
+            <a href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="proj-more reveal">
+        <a href="https://github.com/saurabhraj-115?tab=repositories" target="_blank" rel="noopener">
+          View all repositories on GitHub
+          <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ── EDUCATION ── -->
   <section id="education" class="sec-pad alt-bg">
     <div class="wrap">
@@ -669,6 +784,14 @@
           <li><span class="arw" style="color:#fb7185">▸</span> Led a grant-funded initiative against period poverty in tribal villages — reached <strong>1,500 women and girls</strong>, driving lasting adoption of modern menstrual care that halved cloth-based practices.</li>
           <li><span class="arw" style="color:#fb7185">▸</span> Championed Kohvar &amp; Sohrai tribal art with <strong>500+ artisans</strong>, targeting a 50% lift in monthly income by 2028.</li>
         </ul>
+      </div>
+      <p class="eyebrow reveal" style="text-align:center;margin-top:56px">Off the clock</p>
+      <div class="hobbies reveal d1">
+        <span class="hobby"><span class="emo">🎸</span> Guitar</span>
+        <span class="hobby"><span class="emo">🥾</span> Hiking</span>
+        <span class="hobby"><span class="emo">⚽</span> Soccer</span>
+        <span class="hobby"><span class="emo">🍳</span> Cooking</span>
+        <span class="hobby"><span class="emo">🎬</span> Historical Documentaries</span>
       </div>
     </div>
   </section>
