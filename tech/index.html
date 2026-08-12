@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saurabh Raj — AI Product Manager · MBA @ UVA Darden</title>
+  <meta name="description" content="AI Product Manager and UVA Darden MBA candidate. Built enterprise voice & agentic AI worth $27M+ in contracts, scaled a self-serve SaaS line from zero. IIT Guwahati alum.">
+  <meta name="author" content="Saurabh Raj">
+  <link rel="canonical" href="https://saurabhraj-115.github.io/tech/">
+  <meta name="theme-color" content="#05070e">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Saurabh Raj — AI Product Manager · MBA @ UVA Darden">
+  <meta property="og:description" content="AI Product Manager & UVA Darden MBA. $27M+ in enterprise AI contracts. Built a self-serve line from zero to fastest-growing. IIT Guwahati alum.">
+  <meta property="og:url" content="https://saurabhraj-115.github.io/tech/">
+  <meta property="og:image" content="https://saurabhraj-115.github.io/tech/assets/img/20230305_171752_2.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Saurabh Raj — AI Product Manager · MBA @ UVA Darden">
+  <meta name="twitter:description" content="AI Product Manager & UVA Darden MBA. $27M+ in enterprise AI contracts. Built a self-serve line from zero. IIT Guwahati alum.">
+  <meta name="twitter:image" content="https://saurabhraj-115.github.io/tech/assets/img/20230305_171752_2.jpg">
+
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saurabh Raj",
+    "jobTitle": "AI Product Manager",
+    "alumniOf": ["Indian Institute of Technology Guwahati", "University of Virginia Darden School of Business"],
+    "url": "https://saurabhraj-115.github.io/tech/",
+    "sameAs": [
+      "https://www.linkedin.com/in/saurabh-raj-mba",
+      "https://github.com/saurabhraj-115"
+    ],
+    "knowsAbout": ["Artificial Intelligence", "Product Management", "Conversational AI", "Agentic AI", "Go-to-Market Strategy"]
+  }
+  </script>
+
+  <!-- No-flash theme init -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Dark theme (default) */
+      --bg: #05070e;
+      --bg-alt: #080b14;
+      --surface: #0c1220;
+      --surface-2: #0f1729;
+      --border: rgba(255,255,255,0.07);
+      --text: #e2e8f0;
+      --text-soft: #9aa8bd;
+      --text-mut: #5b6b83;
+      --text-faint: #3a4657;
+      --indigo: #6366f1;
+      --indigo-l: #a5b4fc;
+      --cyan: #38bdf8;
+      --violet: #a78bfa;
+      --grid: rgba(255,255,255,0.02);
+      --card-glow: rgba(99,102,241,0.08);
+      --shadow: 0 20px 50px -12px rgba(0,0,0,0.6);
+    }
+    [data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-alt: #eef2f9;
+      --surface: #ffffff;
+      --surface-2: #ffffff;
+      --border: rgba(15,23,42,0.10);
+      --text: #131b2e;
+      --text-soft: #47566b;
+      --text-mut: #6b7a91;
+      --text-faint: #93a1b5;
+      --indigo: #4f46e5;
+      --indigo-l: #4338ca;
+      --cyan: #0284c7;
+      --violet: #7c3aed;
+      --grid: rgba(15,23,42,0.03);
+      --card-glow: rgba(99,102,241,0.06);
+      --shadow: 0 20px 45px -15px rgba(30,41,59,0.22);
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text-soft);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+      animation: pageFade 0.6s ease both;
+    }
+    @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
+
+    h1,h2,h3 { color: var(--text); font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    strong { color: var(--text); font-weight: 600; }
+    ::selection { background: rgba(99,102,241,0.3); color: #fff; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    section { position: relative; }
+    .sec-pad { padding: 100px 0; }
+    .alt-bg { background: var(--bg-alt); }
+    .eyebrow { color: var(--indigo-l); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; }
+    .sec-head { text-align: center; margin-bottom: 60px; }
+    .sec-head h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin-top: 10px; }
+    .lead { color: var(--text-soft); }
+
+    /* ── Gradient text ── */
+    .g-text {
+      background: linear-gradient(115deg, var(--indigo-l), var(--indigo) 40%, var(--cyan) 75%, var(--violet));
+      background-size: 250% 250%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: gradShift 7s ease infinite;
+    }
+    @keyframes gradShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+    /* ── Scroll progress ── */
+    #scrollbar {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--indigo), var(--cyan), var(--violet));
+      z-index: 300; transition: width 0.08s linear;
+    }
+    /* ── Cursor glow ── */
+    #glow {
+      position: fixed; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 65%);
+      pointer-events: none; transform: translate(-50%,-50%); z-index: 1; will-change: left,top;
+    }
+    [data-theme="light"] #glow { display: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; inset-inline: 0; z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled {
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      backdrop-filter: blur(18px) saturate(1.4);
+      border-bottom-color: var(--border);
+    }
+    .nav-in { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; }
+    .logo span { background: linear-gradient(135deg, var(--indigo-l), var(--cyan));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-mut); font-size: 0.88rem; position: relative; transition: color 0.2s; }
+    .nav-links a::after { content:''; position:absolute; left:0; right:0; bottom:-5px; height:1.5px;
+      background: var(--indigo); transform: scaleX(0); transition: transform 0.25s; transform-origin: left; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+
+    .icon-btn {
+      width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-soft); display: grid; place-items: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .icon-btn:hover { color: var(--text); border-color: color-mix(in srgb, var(--indigo) 50%, transparent); transform: translateY(-2px); }
+    .icon-btn svg { width: 18px; height: 18px; }
+    .sun { display: none; } [data-theme="light"] .sun { display: block; } [data-theme="light"] .moon { display: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.25s;
+      padding: 10px 20px; border: 1px solid transparent; white-space: nowrap;
+    }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, #4f46e5, var(--indigo)); box-shadow: 0 8px 24px -8px rgba(99,102,241,0.6); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(99,102,241,0.8); }
+    .btn-ghost { color: var(--text-soft); border-color: var(--border); background: color-mix(in srgb, var(--surface) 60%, transparent); }
+    .btn-ghost:hover { color: var(--text); border-color: color-mix(in srgb, var(--indigo) 45%, transparent); transform: translateY(-2px); }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-lg { padding: 14px 28px; font-size: 0.9rem; }
+
+    #hamburger { display: none; }
+
+    /* ── Hero ── */
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;
+      background-image:
+        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(99,102,241,0.18), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgba(56,189,248,0.10), transparent 60%);
+    }
+    .grid-ov { position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 54px 54px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%); }
+    #wave { position: absolute; inset: auto 0 0 0; width: 100%; height: 42vh; z-index: 0; opacity: 0.9; pointer-events: none; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 420px; height: 420px; background: rgba(99,102,241,0.14); top: 12%; left: 8%; animation: float1 20s ease-in-out infinite; }
+    .orb-2 { width: 340px; height: 340px; background: rgba(56,189,248,0.09); top: 44%; right: 6%; animation: float2 24s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-35px,25px)} }
+
+    .hero-in { position: relative; z-index: 2; text-align: center; padding: 120px 24px 100px; max-width: 860px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 500;
+      background: color-mix(in srgb, var(--indigo) 12%, transparent); border: 1px solid color-mix(in srgb, var(--indigo) 30%, transparent);
+      color: var(--indigo-l); margin-bottom: 30px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34,197,94,0.5); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)} 70%{box-shadow:0 0 0 8px rgba(34,197,94,0)} 100%{box-shadow:0 0 0 0 rgba(34,197,94,0)} }
+    .hero-name { font-size: clamp(3rem, 11vw, 6.8rem); line-height: 0.98; margin-bottom: 22px; }
+    .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .word > span { display: inline-block; transform: translateY(110%); animation: wordUp 0.9s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes wordUp { to { transform: translateY(0); } }
+    .hero-role { font-size: clamp(1.05rem, 3vw, 1.4rem); color: var(--text-soft); margin-bottom: 16px; font-weight: 500; }
+    .hero-role .accent { color: var(--indigo); font-weight: 600; }
+    .caret { color: var(--indigo); font-weight: 300; animation: blink 1.1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-tag { color: var(--text-mut); max-width: 620px; margin: 0 auto 40px; font-size: 1.02rem; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .scroll-hint { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2;
+      color: var(--text-faint); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em;
+      display: flex; flex-direction: column; align-items: center; gap: 6px; animation: bob 2s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,6px)} }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.vis { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; }
+
+    /* ── Stats ── */
+    .stats { border-block: 1px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 56px 0; }
+    .stat { text-align: center; transition: transform .3s; }
+    .stat:hover { transform: translateY(-4px); }
+    .stat .num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 2.9rem); margin-bottom: 6px; }
+    .stat p { color: var(--text-mut); font-size: 0.82rem; line-height: 1.4; }
+
+    /* ── Cards ── */
+    .card { position: relative; background: var(--surface); border-radius: 18px; border: 1px solid var(--border); transition: border-color .3s, transform .3s; }
+    .card::after { content:''; position:absolute; inset:0; border-radius:18px; pointer-events:none; opacity:0; transition:opacity .3s;
+      background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), var(--card-glow), transparent 60%); }
+    .card:hover { border-color: color-mix(in srgb, var(--indigo) 40%, transparent); }
+    .card:hover::after { opacity: 1; }
+
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: center; }
+    .photo-wrap { position: relative; }
+    .photo-wrap::before { content:''; position:absolute; inset:-18px; border-radius:24px; z-index:-1;
+      background: radial-gradient(ellipse at center, rgba(99,102,241,0.16), transparent 70%); }
+    .photo { border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; border: 1px solid var(--border); position: relative; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .7s; }
+    .photo:hover img { transform: scale(1.05); }
+    .float-card { position: absolute; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
+    .float-card.tl { top: -22px; left: -22px; } .float-card.br { bottom: -22px; right: -22px; }
+    .float-card .k { color: var(--text-mut); font-size: 0.68rem; margin-bottom: 2px; }
+    .float-card .v { color: var(--text); font-weight: 600; font-size: 0.85rem; }
+    .float-card .s { font-size: 0.72rem; font-weight: 500; }
+    .about h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.1; margin: 14px 0 22px; }
+    .about p { margin-bottom: 16px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+    .info { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; transition: transform .2s; }
+    .info:hover { transform: translateY(-2px); }
+    .info .k { color: var(--text-mut); font-size: 0.68rem; margin-bottom: 3px; }
+    .info .v { color: var(--text); font-weight: 500; font-size: 0.86rem; }
+
+    /* ── Experience ── */
+    .timeline { position: relative; display: flex; flex-direction: column; gap: 22px; padding-left: 0; }
+    @media (min-width: 780px) { .timeline { padding-left: 56px; }
+      .timeline::before { content:''; position:absolute; left:27px; top:30px; bottom:30px; width:1.5px;
+        background: linear-gradient(var(--indigo), var(--cyan), var(--violet), transparent); } }
+    .exp { padding: 30px; }
+    .exp-dot { display: none; }
+    @media (min-width: 780px) { .exp-dot { display: grid; place-items: center; position: absolute; left: -56px; top: 30px;
+      width: 30px; height: 30px; border-radius: 50%; background: var(--surface); border: 2px solid var(--indigo); box-shadow: 0 0 14px rgba(99,102,241,0.4); }
+      .exp-dot i { width: 9px; height: 9px; border-radius: 50%; background: var(--indigo); display: block; } }
+    .exp-head { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+    .exp-logo { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; font-family:'Syne',sans-serif; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .exp-t { display: flex; gap: 16px; align-items: flex-start; }
+    .exp h3 { font-size: 1.12rem; font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+    .exp .co { font-weight: 600; font-size: 0.95rem; }
+    .exp .meta { color: var(--text-mut); font-size: 0.82rem; margin-top: 2px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 999px; font-size: 0.74rem; font-weight: 500;
+      border: 1px solid var(--border); color: var(--text-mut); white-space: nowrap; background: color-mix(in srgb, var(--surface-2) 60%, transparent); }
+    .chip.live { color: #4ade80; border-color: rgba(34,197,94,0.25); background: rgba(34,197,94,0.08); }
+    .highlight { border-radius: 12px; padding: 13px 16px; margin-bottom: 16px; font-size: 0.86rem; font-weight: 500; }
+    ul.bullets { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    ul.bullets li { position: relative; padding-left: 22px; font-size: 0.9rem; color: var(--text-soft); }
+    ul.bullets .arw { position: absolute; left: 0; top: 0; font-weight: 700; }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 44px; }
+    .skill-col h3 { font-size: 0.9rem; font-family:'Inter',sans-serif; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+    .skill-col h3 .d { width: 8px; height: 8px; border-radius: 50%; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; }
+    .tag { display: inline-flex; padding: 7px 14px; border-radius: 999px; font-size: 0.8rem;
+      background: color-mix(in srgb, var(--indigo) 9%, transparent); border: 1px solid color-mix(in srgb, var(--indigo) 22%, transparent);
+      color: var(--indigo-l); opacity: 0; transform: scale(.85); transition: background .2s, border-color .2s, color .2s, box-shadow .2s; }
+    .tag.in { animation: tagPop .5s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes tagPop { to { opacity: 1; transform: none; } }
+    .tag:hover { background: color-mix(in srgb, var(--indigo) 20%, transparent); border-color: color-mix(in srgb, var(--indigo) 55%, transparent); color: var(--text); box-shadow: 0 0 16px rgba(99,102,241,0.2); }
+
+    /* ── Projects ── */
+    .proj-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 22px; }
+    .proj { grid-column: span 2; padding: 24px; display: flex; flex-direction: column; }
+    /* center the trailing 2 cards (5 total) instead of left-aligning them */
+    .proj-grid > .proj:nth-child(4) { grid-column: 2 / span 2; }
+    .proj-grid > .proj:nth-child(5) { grid-column: 4 / span 2; }
+    .proj-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 13px; }
+    .proj-top .gh { color: var(--text-mut); transition: color .2s; } .proj:hover .gh { color: var(--text); }
+    .proj-top .gh svg { width: 20px; height: 20px; }
+    .proj-ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 1.15rem;
+      background: color-mix(in srgb, var(--indigo) 9%, transparent); border: 1px solid color-mix(in srgb, var(--indigo) 20%, transparent); }
+    .proj h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .proj h3 a { transition: color .2s; } .proj h3 a:hover { color: var(--indigo-l); }
+    .proj p { font-size: 0.85rem; color: var(--text-soft); flex: 1; margin-bottom: 15px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+    .proj-tag { font-size: 0.68rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-mut); }
+    .proj-links { display: flex; gap: 16px; font-size: 0.8rem; font-weight: 500; }
+    .proj-links a { color: var(--indigo-l); display: inline-flex; align-items: center; gap: 5px; transition: color .2s; }
+    .proj-links a:hover { color: var(--text); }
+    .proj-links svg { width: 14px; height: 14px; }
+    .proj-more { text-align: center; margin-top: 36px; }
+    .proj-more a { display: inline-flex; align-items: center; gap: 8px; color: var(--text-soft); font-weight: 500; font-size: 0.9rem; transition: color .2s; }
+    .proj-more a:hover { color: var(--text); }
+
+    /* ── Hobbies ── */
+    .hobbies { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 34px; }
+    .hobby { display: inline-flex; align-items: center; gap: 9px; padding: 10px 18px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border); font-size: 0.88rem; color: var(--text-soft); transition: transform .2s, border-color .2s; }
+    .hobby:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--indigo) 40%, transparent); }
+    .hobby .emo { font-size: 1.1rem; }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+    .edu { padding: 30px; }
+    .edu-ico { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; flex-shrink: 0; }
+    .badge-sm { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; font-size: 0.68rem; font-weight: 600; margin-bottom: 8px; }
+
+    /* ── Testimonials ── */
+    .tst-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .tst { padding: 26px; display: flex; flex-direction: column; }
+    .stars { color: #fbbf24; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .tst q { color: var(--text-soft); font-size: 0.9rem; font-style: normal; flex: 1; margin-bottom: 20px; quotes: none; }
+    .tst .who { display: flex; align-items: center; gap: 12px; }
+    .tst .who img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background: var(--surface-2); }
+    .tst .who .nm { color: var(--text); font-weight: 600; font-size: 0.86rem; }
+    .tst .who .rl { color: var(--text-mut); font-size: 0.75rem; }
+    .span2 { grid-column: span 2; }
+
+    /* ── Contact ── */
+    #contact { text-align: center; overflow: hidden; }
+    .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(99,102,241,0.12); top: 50%; left: 50%;
+      transform: translate(-50%,-50%); animation: ring 4s ease-in-out infinite; pointer-events: none; }
+    .ring.a { width: 560px; height: 560px; } .ring.b { width: 780px; height: 780px; border-color: rgba(99,102,241,0.06); animation-delay: 1s; }
+    @keyframes ring { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.05);opacity:.55} }
+    #contact h2 { font-size: clamp(1.9rem, 6vw, 3.2rem); line-height: 1.1; margin-bottom: 18px; }
+    .contact-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin: 36px 0 44px; }
+    .socials { display: flex; justify-content: center; gap: 22px; }
+    .socials a { color: var(--text-mut); transition: all .2s; }
+    .socials a:hover { color: var(--text); transform: translateY(-3px) scale(1.1); }
+    .socials svg { width: 22px; height: 22px; }
+
+    footer { padding: 32px 0; border-top: 1px solid var(--border); }
+    .foot-in { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; }
+    footer p { color: var(--text-faint); font-size: 0.8rem; }
+
+    #btt { position: fixed; bottom: 28px; right: 28px; width: 42px; height: 42px; border-radius: 50%; z-index: 90;
+      background: linear-gradient(135deg, #4f46e5, var(--indigo)); color: #fff; display: grid; place-items: center;
+      box-shadow: 0 8px 22px -6px rgba(99,102,241,0.7); opacity: 0; transform: translateY(14px) scale(.9); transition: all .3s; cursor: pointer; }
+    #btt.show { opacity: 1; transform: none; }
+    #btt svg { width: 18px; height: 18px; }
+
+    /* ── Mobile ── */
+    nav.menu-open { background: color-mix(in srgb, var(--bg) 97%, transparent); backdrop-filter: blur(18px) saturate(1.4); border-bottom-color: var(--border); }
+    #mobmenu { display: none; border-top: 1px solid var(--border); background: color-mix(in srgb, var(--bg) 97%, transparent); backdrop-filter: blur(18px); }
+    #mobmenu.open { display: block; }
+    #mobmenu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; padding: 14px 24px 20px; }
+    #mobmenu a { color: var(--text-soft); padding: 8px 0; font-size: 0.95rem; display: block; }
+
+    @media (max-width: 860px) {
+      .nav-links, .nav-right .btn { display: none; }
+      #hamburger { display: grid; }
+      .about-grid { grid-template-columns: 1fr; gap: 60px; }
+      .skills-grid { grid-template-columns: 1fr; gap: 34px; }
+      .edu-grid, .tst-grid, .proj-grid { grid-template-columns: 1fr; }
+      .proj, .proj-grid > .proj:nth-child(4), .proj-grid > .proj:nth-child(5) { grid-column: auto; }
+      .span2 { grid-column: span 1; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); gap: 26px 20px; }
+      .sec-pad { padding: 72px 0; }
+    }
+    @media (max-width: 460px) {
+      .float-card.tl { top:-14px; left:-10px; } .float-card.br { bottom:-14px; right:-10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .word > span { transform: none !important; }
+      .tag { opacity: 1 !important; transform: none !important; }
+    }
+    :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 4px; }
+  </style>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.tag{opacity:1!important;transform:none!important}.word>span{transform:none!important}</style></noscript>
+</head>
+
+<body>
+  <div id="scrollbar"></div>
+  <div id="glow" aria-hidden="true"></div>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <div class="wrap nav-in">
+      <a href="#hero" class="logo"><span>SR</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+          <svg class="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg class="sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+        <a href="assets/Saurabh_Raj_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Résumé</a>
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <button class="icon-btn" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobmenu">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="assets/Saurabh_Raj_Resume.pdf" target="_blank" rel="noopener">Download Résumé →</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header id="hero">
+    <div class="grid-ov" aria-hidden="true"></div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <canvas id="wave" aria-hidden="true"></canvas>
+
+    <div class="hero-in">
+      <div class="badge reveal"><span class="dot"></span> MBA Candidate · UVA Darden · Class of 2028</div>
+      <h1 class="hero-name">
+        <span class="word"><span style="animation-delay:.15s">Saurabh</span></span>
+        <span class="word"><span style="animation-delay:.3s">Raj</span></span>
+      </h1>
+      <p class="hero-role reveal d1">AI Product Manager · <span class="accent" id="typed"></span><span class="caret">|</span></p>
+      <p class="hero-tag reveal d2">I build AI products that ship and scale — <strong>$27M+</strong> in enterprise contracts, a self-serve line grown <strong>20% month-over-month</strong>, now sharpening the craft at UVA Darden.</p>
+      <div class="hero-cta reveal d3">
+        <a href="#experience" class="btn btn-primary btn-lg">View my work</a>
+        <a href="assets/Saurabh_Raj_Resume.pdf" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+          Résumé
+        </a>
+        <a href="https://github.com/saurabhraj-115" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/saurabh-raj-mba" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>scroll</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </header>
+
+  <!-- ── STATS ── -->
+  <section class="stats alt-bg">
+    <div class="wrap stats-grid">
+      <div class="stat reveal"><div class="num g-text">$<span class="cnt" data-to="27">0</span>M+</div><p>Enterprise AI contracts secured</p></div>
+      <div class="stat reveal d1"><div class="num g-text">$<span class="cnt" data-to="30">0</span>B+</div><p>SMB market unlocked via Social Lite</p></div>
+      <div class="stat reveal d2"><div class="num g-text"><span class="cnt" data-to="20">0</span>%</div><p>MoM growth sustained for 18 months</p></div>
+      <div class="stat reveal d3"><div class="num g-text"><span class="cnt" data-to="80">0</span>%</div><p>Cost cut via agentic IVR redesign</p></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="sec-pad">
+    <div class="wrap about-grid">
+      <div class="photo-wrap reveal">
+        <div class="photo">
+          <img src="assets/img/20230305_171752_2.jpg" alt="Portrait of Saurabh Raj" loading="lazy"
+               onerror="this.closest('.photo').style.background='var(--surface-2)';this.style.display='none'">
+        </div>
+        <div class="float-card br">
+          <div class="k">Previously</div><div class="v">Senior AI PM</div><div class="s" style="color:var(--indigo)">Voicing AI</div>
+        </div>
+        <div class="float-card tl">
+          <div class="k">Now</div><div class="v">MBA Candidate</div><div class="s" style="color:var(--cyan)">UVA Darden ’28</div>
+        </div>
+      </div>
+      <div class="about reveal d1">
+        <p class="eyebrow">About me</p>
+        <h2>AI PM by craft,<br>builder by instinct.</h2>
+        <p>I'm an AI Product Manager and first-year MBA at <strong>UVA Darden</strong> (Management Science). Most recently, as Senior AI PM at <strong>Voicing AI</strong>, I owned enterprise voice &amp; agentic AI end-to-end — securing <strong>$27M+</strong> in annual contracts and deploying multilingual agents across 8 international airports handling 50K+ daily inquiries in 12+ languages.</p>
+        <p>Before that, 3+ years at <strong>Sprinklr</strong> — rising analyst → PM and conceiving <strong>"Social Lite,"</strong> a self-serve line I scaled from zero to the company's fastest-growing, unlocking a <strong>$30B+ SMB market.</strong></p>
+        <p><strong>IIT Guwahati</strong> Engineering Physics grad and NTSE Scholar. I ship my own AI builds — 8+ open-source repos spanning agentic voice, RAG, and multi-agent systems — and care most about products that create outsized impact.</p>
+        <div class="info-grid">
+          <div class="info"><div class="k">Location</div><div class="v">Charlottesville, VA</div></div>
+          <div class="info"><div class="k">Education</div><div class="v">IIT-G · UVA Darden</div></div>
+          <div class="info"><div class="k">Focus</div><div class="v">AI · Product · 0→1</div></div>
+          <div class="info"><div class="k">Email</div><div class="v" style="font-size:0.78rem">saurabhraj.apps@gmail.com</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience" class="sec-pad alt-bg">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Where I've worked</p><h2>Experience</h2></div>
+      <div class="timeline">
+
+        <!-- Voicing AI -->
+        <div class="card exp reveal">
+          <div class="exp-dot"><i></i></div>
+          <div class="exp-head">
+            <div class="exp-t">
+              <div class="exp-logo" style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.22);color:var(--indigo)">V</div>
+              <div>
+                <h3>Senior Product Manager — Artificial Intelligence</h3>
+                <p class="co" style="color:var(--indigo)">Voicing AI</p>
+                <p class="meta">Enterprise voice &amp; agentic AI · India's largest telephony clients</p>
+              </div>
+            </div>
+            <span class="chip">2025 – 2026 · Remote, India</span>
+          </div>
+          <div class="highlight" style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);color:var(--indigo-l)">
+            Owned agent architecture end-to-end, securing $27M+ in annual contracts.
+          </div>
+          <ul class="bullets">
+            <li><span class="arw" style="color:var(--indigo)">▸</span> Traced end-caller drop-off in a tangled 100+ node IVR that callers couldn't navigate and clients couldn't maintain, rebuilding it into a streamlined <strong>10-node agentic flow, cutting spam-handling costs 80%.</strong></li>
+            <li><span class="arw" style="color:var(--indigo)">▸</span> Pioneered omnichannel conversational AI across voice, chat, and WhatsApp integrated with Salesforce and ServiceNow — <strong>average handling time down 60%, CSAT up 50%.</strong></li>
+            <li><span class="arw" style="color:var(--indigo)">▸</span> Deployed multilingual voice agents across 8 international airports handling <strong>50K+ daily inquiries in 12+ languages</strong>, automating 95% of queries and saving 2,000+ man-hours monthly.</li>
+          </ul>
+        </div>
+
+        <!-- Sprinklr -->
+        <div class="card exp reveal d1">
+          <div class="exp-dot" style="border-color:var(--cyan);box-shadow:0 0 14px rgba(56,189,248,.4)"><i style="background:var(--cyan)"></i></div>
+          <div class="exp-head">
+            <div class="exp-t">
+              <div class="exp-logo" style="background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);color:var(--cyan)">S</div>
+              <div>
+                <h3>Product Manager <span style="color:var(--text-mut);font-weight:400;font-size:.85rem">→ APM → Sr. Analyst</span></h3>
+                <p class="co" style="color:var(--cyan)">Sprinklr</p>
+                <p class="meta">Unified customer experience management · Valued $2.7B</p>
+              </div>
+            </div>
+            <span class="chip">2022 – 2025 · Gurugram</span>
+          </div>
+          <div class="highlight" style="background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);color:#7dd3fc">
+            Two promotions in 24 months (company average: 30). Built Sprinklr's fastest-growing self-serve line.
+          </div>
+          <ul class="bullets">
+            <li><span class="arw" style="color:var(--cyan)">▸</span> Conceived and scaled <strong>"Social Lite"</strong> from zero to the fastest-growing self-serve line, compounding <strong>20% month-over-month over 18 months</strong> and unlocking a $30B+ SMB segment.</li>
+            <li><span class="arw" style="color:var(--cyan)">▸</span> Acquired <strong>250+ clients worth $5M+</strong> by targeting mid-market gaps, establishing the revenue base.</li>
+            <li><span class="arw" style="color:var(--cyan)">▸</span> Directed cross-functional teams to consolidate <strong>20+ channels</strong> into one workflow, cutting resolution time 80% and lifting brand mentions 20%.</li>
+            <li><span class="arw" style="color:var(--cyan)">▸</span> Shipped integrations enabling legacy clients to self-build (turnaround −50%, <strong>$7M in contracts</strong>); ran 1,000+ customer demos converting pain points into roadmap.</li>
+          </ul>
+        </div>
+
+        <!-- Wipro -->
+        <div class="card exp reveal d2">
+          <div class="exp-dot" style="border-color:var(--violet);box-shadow:0 0 14px rgba(167,139,250,.35)"><i style="background:var(--violet)"></i></div>
+          <div class="exp-head">
+            <div class="exp-t">
+              <div class="exp-logo" style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.22);color:var(--violet)">W</div>
+              <div>
+                <h3>Associate Consultant</h3>
+                <p class="co" style="color:var(--violet)">Wipro Technologies</p>
+                <p class="meta">Enterprise IT consulting · Valued $33B+</p>
+              </div>
+            </div>
+            <span class="chip">2019 – 2022 · Bengaluru</span>
+          </div>
+          <ul class="bullets">
+            <li><span class="arw" style="color:var(--violet)">▸</span> Directed a <strong>10-member team migrating 15M records</strong> for a $200B pharma client, averting $20M in compliance exposure and unlocking $2M in upsell.</li>
+            <li><span class="arw" style="color:var(--violet)">▸</span> Fortified data security for clients in resource-sensitive businesses, diagnosing legacy-database failure risk before it hit production.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">What I work with</p><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <div class="skill-col reveal" data-tags>
+          <h3><span class="d" style="background:var(--indigo)"></span> Product</h3>
+          <div class="tags">
+            <span class="tag">Product Strategy</span><span class="tag">Roadmapping</span><span class="tag">0→1 Products</span>
+            <span class="tag">Discovery &amp; Research</span><span class="tag">PRDs &amp; Specs</span><span class="tag">A/B Testing</span>
+            <span class="tag">Stakeholder Mgmt</span><span class="tag">Go-to-Market</span><span class="tag">Agile / Scrum</span>
+          </div>
+        </div>
+        <div class="skill-col reveal d1" data-tags>
+          <h3><span class="d" style="background:var(--cyan)"></span> AI &amp; Technical</h3>
+          <div class="tags">
+            <span class="tag">LLMs</span><span class="tag">Voice AI</span><span class="tag">Conversational AI</span>
+            <span class="tag">Agentic Systems</span><span class="tag">RAG Pipelines</span><span class="tag">Multi-Agent</span>
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Salesforce / ServiceNow</span>
+          </div>
+        </div>
+        <div class="skill-col reveal d2" data-tags>
+          <h3><span class="d" style="background:var(--violet)"></span> Growth &amp; Craft</h3>
+          <div class="tags">
+            <span class="tag">Self-Serve GTM</span><span class="tag">B2B Sales</span><span class="tag">User Empathy</span>
+            <span class="tag">Data-Driven Decisions</span><span class="tag">Storytelling</span><span class="tag">Figma</span><span class="tag">Entrepreneurship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Built in public</p><h2>Open-Source Projects</h2></div>
+      <div class="proj-grid">
+
+        <div class="card proj reveal">
+          <div class="proj-top">
+            <div class="proj-ico">🕮</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener" aria-label="crossVerse on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener">crossVerse</a></h3>
+          <p>Ask any question, get answers from scripture — semantic search across 177,000 verses from 12 world religions, with cross-faith comparison and mood matching.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">RAG</span><span class="proj-tag">Claude</span><span class="proj-tag">Qdrant</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/crossVerse" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d1">
+          <div class="proj-top">
+            <div class="proj-ico">🤖</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener" aria-label="Gentigram on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener">Gentigram</a></h3>
+          <p>A browser-based social network where autonomous AI agents with distinct personalities scroll, post, and like — a live multi-agent simulation with its own recommendation engine.</p>
+          <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Multi-Agent</span><span class="proj-tag">GPT-4</span><span class="proj-tag">Node.js</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/Gentigram" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d2">
+          <div class="proj-top">
+            <div class="proj-ico">📹</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener" aria-label="camIA on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener">camIA</a></h3>
+          <p>AI-powered CCTV monitoring — OpenCV motion detection triggers Claude Vision to evaluate custom per-camera conditions and fire Telegram alerts, with a live web dashboard.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Claude Vision</span><span class="proj-tag">OpenCV</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/camIA" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d1">
+          <div class="proj-top">
+            <div class="proj-ico">💬</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener" aria-label="claudeLike on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener">claudeLike</a></h3>
+          <p>Privacy-first, self-hosted Claude chat — bring your own API key (never stored server-side), with conversation history, file uploads, and markdown rendering.</p>
+          <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">React</span><span class="proj-tag">Express</span><span class="proj-tag">PostgreSQL</span></div>
+          <div class="proj-links"><a href="https://github.com/saurabhraj-115/claudeLike" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a></div>
+        </div>
+
+        <div class="card proj reveal d2">
+          <div class="proj-top">
+            <div class="proj-ico">🧬</div>
+            <a class="gh" href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener" aria-label="rnaseq-webapp on GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+          <h3><a href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener">rnaseq-webapp</a></h3>
+          <p>An RNA-seq differential-expression analysis platform that pits classical statistical pipelines against machine-learning models — deployed and running live.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">ML</span><span class="proj-tag">Bioinformatics</span></div>
+          <div class="proj-links">
+            <a href="https://rnaseq-webapp.fly.dev" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg> Live</a>
+            <a href="https://github.com/saurabhraj-115/rnaseq-webapp" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> Code</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="proj-more reveal">
+        <a href="https://github.com/saurabhraj-115?tab=repositories" target="_blank" rel="noopener">
+          View all repositories on GitHub
+          <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education" class="sec-pad alt-bg">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Academic journey</p><h2>Education</h2></div>
+      <div class="edu-grid">
+        <div class="card edu reveal">
+          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px">
+            <div class="edu-ico" style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.22)">🎓</div>
+            <div>
+              <span class="badge-sm" style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);color:var(--indigo-l)"><span class="dot"></span> Current</span>
+              <h3 style="font-family:'Inter';font-weight:700;font-size:1.08rem;line-height:1.25">Master of Business Administration</h3>
+              <p class="co" style="color:var(--indigo);font-weight:600">UVA Darden School of Business</p>
+              <p class="meta">Charlottesville, VA · Class of 2028 · Management Science</p>
+            </div>
+          </div>
+          <p style="color:var(--text-mut);font-size:.88rem">One of the world's most immersive, case-method MBA programs — ranked #1 globally for teaching quality.</p>
+        </div>
+        <div class="card edu reveal d1">
+          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px">
+            <div class="edu-ico" style="background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22)">⚡</div>
+            <div>
+              <span class="badge-sm" style="background:color-mix(in srgb,var(--surface-2) 60%,transparent);border:1px solid var(--border);color:var(--text-mut)">2015 – 2019</span>
+              <h3 style="font-family:'Inter';font-weight:700;font-size:1.08rem;line-height:1.25">B.Tech, Engineering Physics</h3>
+              <p class="co" style="color:var(--cyan);font-weight:600">IIT Guwahati</p>
+              <p class="meta">GPA 7.67/10 · NTSE Scholar</p>
+            </div>
+          </div>
+          <ul class="bullets">
+            <li><span class="arw" style="color:var(--cyan)">▸</span> Head of Model UN — first international MUN in North-East India (8 countries, +66% YoY revenue).</li>
+            <li><span class="arw" style="color:var(--cyan)">▸</span> AIESEC Turkey, 2016 — led 17 volunteers through a military coup on UN SDG projects without losing a single project day.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEADERSHIP ── -->
+  <section id="leadership" class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Beyond work</p><h2>Community Leadership</h2></div>
+      <div class="card exp reveal" style="max-width:760px;margin:0 auto">
+        <div class="exp-head">
+          <div class="exp-t">
+            <div class="exp-logo" style="background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.22);font-size:1.5rem">🌿</div>
+            <div>
+              <h3>VP Strategy → Associate VP Strategy</h3>
+              <p class="co" style="color:#fb7185">Oneform Foundation</p>
+              <p class="meta">Rural Jharkhand, India</p>
+            </div>
+          </div>
+          <span class="chip">2023 – 2024</span>
+        </div>
+        <ul class="bullets">
+          <li><span class="arw" style="color:#fb7185">▸</span> Led a grant-funded initiative against period poverty in tribal villages — reached <strong>1,500 women and girls</strong>, driving lasting adoption of modern menstrual care that halved cloth-based practices.</li>
+          <li><span class="arw" style="color:#fb7185">▸</span> Championed Kohvar &amp; Sohrai tribal art with <strong>500+ artisans</strong>, targeting a 50% lift in monthly income by 2028.</li>
+        </ul>
+      </div>
+      <p class="eyebrow reveal" style="text-align:center;margin-top:56px">Off the clock</p>
+      <div class="hobbies reveal d1">
+        <span class="hobby"><span class="emo">🎸</span> Guitar</span>
+        <span class="hobby"><span class="emo">🥾</span> Hiking</span>
+        <span class="hobby"><span class="emo">⚽</span> Soccer</span>
+        <span class="hobby"><span class="emo">🍳</span> Cooking</span>
+        <span class="hobby"><span class="emo">🎬</span> Historical Documentaries</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section id="testimonials" class="sec-pad alt-bg">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow">Kind words</p><h2>Testimonials</h2></div>
+      <div class="tst-grid">
+
+        <div class="card tst reveal">
+          <div class="stars">★★★★★</div>
+          <q>Saurabh is an excellent task manager. A rock-solid work ethic and a strong sense of responsibility make him an invaluable leader. Aspires for his best and pushes others to do the same.</q>
+          <div class="who">
+            <img src="assets/img/testimonials/krispy.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div><div class="nm">Krishna Yalamarthy</div><div class="rl">Architect · NVIDIA</div></div>
+          </div>
+        </div>
+
+        <div class="card tst reveal d1">
+          <div class="stars">★★★★★</div>
+          <q>Saurabh has a great eye for detail and creative storytelling. I thoroughly enjoyed working with him drafting B2B brand guidelines for our GrowthX capstone project.</q>
+          <div class="who">
+            <img src="assets/img/testimonials/priyankap.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div><div class="nm">Priyanka Peeramsetty</div><div class="rl">Engineering Operations Director · Crunchyroll</div></div>
+          </div>
+        </div>
+
+        <div class="card tst reveal d2">
+          <div class="stars">★★★★★</div>
+          <q>He conceptualized and shot an ad using just his phone — first time he'd done it, and it was a big hit. His clarity around problem statements is something we all learnt from.</q>
+          <div class="who">
+            <img src="assets/img/testimonials/swarnendu.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div><div class="nm">Swarnendu Dutta</div><div class="rl">Marketing Ops Lead · Outplay</div></div>
+          </div>
+        </div>
+
+        <div class="card tst reveal">
+          <div class="stars">★★★★★</div>
+          <q>His management skills are commendable. His leadership is capable of successfully steering teams through acute situations.</q>
+          <div class="who">
+            <img src="assets/img/testimonials/paridhi.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div><div class="nm">Paridhi Kothari</div><div class="rl">Sr. Researcher · Hotspex Europe</div></div>
+          </div>
+        </div>
+
+        <div class="card tst reveal d1 span2">
+          <div class="stars">★★★★★</div>
+          <q>As the one leading the project, I knew Saurabh was one person I could completely rely on. The turnaround was short and the pressure high — but Saurabh did it, and how! The content he created was applauded by one and all. Working with him was fun and a breeze; I'd love to work with him again.</q>
+          <div class="who">
+            <img src="assets/img/testimonials/kaveri1.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div><div class="nm">Kaveri Das</div><div class="rl">Business Head, ZEE5 Hindi</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="sec-pad">
+    <div class="ring a" aria-hidden="true"></div>
+    <div class="ring b" aria-hidden="true"></div>
+    <div class="wrap" style="max-width:720px;position:relative;z-index:2">
+      <div class="reveal">
+        <p class="eyebrow">Let's talk</p>
+        <h2 style="margin-top:14px">Open to conversations<br>about great products.</h2>
+        <p class="lead" style="max-width:520px;margin:0 auto">Whether it's a collaboration, an internship, or just a coffee chat about AI and product — I'm always up for a good conversation.</p>
+        <div class="contact-cta">
+          <a href="mailto:saurabhraj.apps@gmail.com" class="btn btn-primary btn-lg">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            saurabhraj.apps@gmail.com
+          </a>
+          <a href="tel:+14342273998" class="btn btn-ghost btn-lg">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            +1 (434) 227-3998
+          </a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/saurabhraj-115" target="_blank" rel="noopener" aria-label="GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          <a href="https://www.linkedin.com/in/saurabh-raj-mba" target="_blank" rel="noopener" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg></a>
+          <a href="https://twitter.com/_parabellum___" target="_blank" rel="noopener" aria-label="X"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.instagram.com/machiavelleee/" target="_blank" rel="noopener" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-in">
+      <p>© 2026 Saurabh Raj</p>
+      <p>Designed &amp; built from scratch · Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <button id="btt" aria-label="Back to top">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <script>
+  (() => {
+    'use strict';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Theme toggle
+    const root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    // Scroll progress + nav state + back-to-top + active link
+    const bar = document.getElementById('scrollbar');
+    const nav = document.getElementById('nav');
+    const btt = document.getElementById('btt');
+    const secs = [...document.querySelectorAll('section[id], header[id]')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+    function onScroll() {
+      const y = window.scrollY;
+      bar.style.width = Math.min(y / (document.body.scrollHeight - innerHeight) * 100, 100) + '%';
+      nav.classList.toggle('scrolled', y > 20);
+      btt.classList.toggle('show', y > 500);
+      let cur = '';
+      secs.forEach(s => { if (y >= s.offsetTop - 130) cur = s.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    btt.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+    // Cursor glow
+    const glow = document.getElementById('glow');
+    if (matchMedia('(pointer:fine)').matches && !reduce) {
+      let gx = 0, gy = 0, tx = 0, ty = 0;
+      addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+      (function loop() { gx += (tx - gx) * .09; gy += (ty - gy) * .09; glow.style.left = gx + 'px'; glow.style.top = gy + 'px'; requestAnimationFrame(loop); })();
+    } else { glow.style.display = 'none'; }
+
+    // Typed roles
+    const roles = ['Voice & Agentic AI', '0 → 1 Product Builder', 'Ex-Sprinklr · Ex-Voicing AI', 'IIT Guwahati Alum'];
+    const el = document.getElementById('typed');
+    if (reduce) { el.textContent = roles[0]; }
+    else {
+      let ri = 0, ci = 0, del = false;
+      (function type() {
+        const w = roles[ri];
+        el.textContent = w.slice(0, ci);
+        if (!del) { ci++; if (ci > w.length) { del = true; return setTimeout(type, 2200); } }
+        else { ci--; if (ci < 0) { del = false; ri = (ri + 1) % roles.length; ci = 0; } }
+        setTimeout(type, del ? 40 : 70);
+      })();
+    }
+
+    // Reveal on scroll
+    const ro = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); } }), { threshold: .08, rootMargin: '0px 0px -40px' });
+    document.querySelectorAll('.reveal').forEach(x => ro.observe(x));
+
+    // Counters
+    function count(node, to) {
+      if (reduce) { node.textContent = to; return; }
+      let n = 0; const step = to / 55;
+      const t = setInterval(() => { n = Math.min(n + step, to); node.textContent = Math.round(n); if (n >= to) clearInterval(t); }, 22);
+    }
+    const co = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { count(e.target, +e.target.dataset.to); co.unobserve(e.target); } }), { threshold: .6 });
+    document.querySelectorAll('.cnt').forEach(x => co.observe(x));
+
+    // Skill tag stagger
+    const to = new IntersectionObserver((es) => es.forEach(e => {
+      if (e.isIntersecting) { e.target.querySelectorAll('.tag').forEach((t, i) => setTimeout(() => t.classList.add('in'), reduce ? 0 : i * 55)); to.unobserve(e.target); }
+    }), { threshold: .2 });
+    document.querySelectorAll('[data-tags]').forEach(g => to.observe(g));
+
+    // Card glow follow
+    document.querySelectorAll('.card').forEach(c => {
+      c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    });
+
+    // Mobile menu
+    const ham = document.getElementById('hamburger'), mm = document.getElementById('mobmenu');
+    ham.addEventListener('click', () => { const o = mm.classList.toggle('open'); nav.classList.toggle('menu-open', o); ham.setAttribute('aria-expanded', o); });
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mm.classList.remove('open'); nav.classList.remove('menu-open'); ham.setAttribute('aria-expanded', false); }));
+
+    // ── Hero voice waveform (canvas) ──
+    const cv = document.getElementById('wave'), ctx = cv.getContext('2d');
+    let W, H, dpr, t = 0, mouseX = 0.5;
+    function resize() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize(); addEventListener('resize', resize);
+    addEventListener('mousemove', e => { mouseX = e.clientX / innerWidth; });
+    const light = () => root.getAttribute('data-theme') === 'light';
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const bars = Math.floor(W / 9);
+      const mid = H * 0.72;
+      for (let i = 0; i < bars; i++) {
+        const x = (i / bars) * W;
+        const p = i / bars;
+        // layered sine "voice" envelope, mouse shifts the emphasis
+        const env = Math.sin(p * Math.PI);
+        const a = Math.sin(p * 9 + t) * 0.5 + Math.sin(p * 23 - t * 1.6) * 0.28 + Math.sin(p * 4 + t * 0.7) * 0.5;
+        const focus = 1 - Math.min(Math.abs(p - mouseX) * 2.2, 1) * 0.55;
+        const h = Math.max(2, Math.abs(a) * env * H * 0.34 * focus + 2);
+        const g = ctx.createLinearGradient(0, mid - h, 0, mid + h);
+        const o = light() ? 0.5 : 0.75;
+        g.addColorStop(0, `rgba(99,102,241,${o})`);
+        g.addColorStop(0.5, `rgba(56,189,248,${o})`);
+        g.addColorStop(1, `rgba(167,139,250,${o * 0.6})`);
+        ctx.fillStyle = g;
+        const bw = 3.4;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x, mid - h, bw, h * 2, bw / 2); else ctx.rect(x, mid - h, bw, h * 2);
+        ctx.fill();
+      }
+      t += 0.028; requestAnimationFrame(draw);
+    }
+    if (reduce) {
+      // static single frame
+      const bars = Math.floor(W / 9), mid = H * 0.72;
+      for (let i = 0; i < bars; i++) { const p = i / bars, env = Math.sin(p * Math.PI), h = Math.max(2, env * H * 0.16 + 2);
+        ctx.fillStyle = 'rgba(99,102,241,0.4)'; ctx.fillRect((i / bars) * W, mid - h, 3.4, h * 2); }
+    } else { draw(); }
+  })();
+  </script>
+</body>
+</html>
